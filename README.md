@@ -46,3 +46,4 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 - start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
 
 // kevins addition down here
+// tanners addition here
