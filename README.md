@@ -17,7 +17,7 @@ git merge boilermaker/main
 git branch -m master main
 ```
 
-asdfasdfasdf
+
 
 ## Customize
 
