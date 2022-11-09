@@ -1,37 +1,36 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-
 const Orders = db.define('orders', {
 
-productId: {
+  productId: {
     type: Sequelize.INTEGER,
     allowNull: false
-},
-userId: {
+  },
+  userId: {
     type: Sequelize.INTEGER,
     allowNull: false
-},
-billingAddress: {
+  },
+  billingAddress: {
     type: Sequelize.STRING,
     allowNull: false
-},
-shippingAddress: {
+  },
+  shippingAddress: {
     type: Sequelize.STRING,
     allowNull: false
-},
-productQuantity: {
+  },
+  productQuantity: {
     type: Sequelize.INTEGER,
     allowNull: false
-},
-status: {
-    type: Sequelize.BOOLEAN, 
+  },
+  status: {
+    type: Sequelize.BOOLEAN,
     allowNull: false
-},
-total: {
+  },
+  total: {
     type: Sequelize.FLOAT,
     allowNull: false
-}
+  }
 });
 
 module.exports = Orders;
