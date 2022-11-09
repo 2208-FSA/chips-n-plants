@@ -24,7 +24,41 @@ form div {
   display: inline-block;
 }
 
-/* MAIN PAGE COMPONENTS */
+/* NAVBAR */
+.nav_main_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+}
+
+.nav_top_banner_container {
+  border: 1px solid black;
+  background-color: lightgreen;
+}
+
+.nav_body_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.nav_links_container {
+  border: 1px solid black;
+}
+.nav_links_list {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+}
+.nav_links_list li {
+  border: 1px solid black;
+  list-style: none;
+}
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */
 .footer_container {
   border: 1px solid black;
   display: flex;
@@ -74,8 +108,8 @@ form div {
   border-radius: 15%;
 }
 
-.footer_contact_header{
- font-family: 'Pacifico', cursive;
+.footer_contact_header {
+  font-family: "Pacifico", cursive;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
