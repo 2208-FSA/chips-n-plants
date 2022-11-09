@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer_logo_social_container">
         <img
           className="footer_logo"
-          src="../../public/assets/imgs/logos/chips-n-plants-logos/logo.png"
+          src="./assets/imgs/logos/chips-n-plants-logos/logo.png"
         ></img>
         <img className="instagram_logo"></img>
         <img className="facebook_logo"></img>
@@ -24,7 +24,10 @@ const Footer = () => {
       </div>
       <div className="footer_contact">
         <p className="footer_contact_header"> fancy text - stay in the know</p>
-        <p className="footer_contact_text"> stay in touch, sign up to get the latest intel</p>
+        <p className="footer_contact_text">
+          {" "}
+          stay in touch, sign up to get the latest intel
+        </p>
         <label className="footer_contact_label">
           <input
             placeholder="Email Address"
