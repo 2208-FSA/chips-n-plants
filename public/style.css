@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -21,18 +25,57 @@ form div {
 }
 
 /* MAIN PAGE COMPONENTS */
-.footer {
-  border: 3px solid black;
+.footer_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  height: 400px;
+  width: 100%;
+  padding: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer_logo_social_container {
-  border: 3px solid black;
+  border: 1px solid black;
+  width: 200px;
 }
 
 .footer_nav {
-  border: 3px solid black;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  width: 200px;
+}
+
+.footer_nav ul {
+  width: 100px;
+}
+
+.footer_nav li {
+  border: 1px solid black;
+  list-style: none;
 }
 
 .footer_contact {
-  border: 3px solid black;
+  border: 1px solid black;
 }
+
+.footer_contact_input {
+  border-radius: 15%;
+}
+
+.footer_contact_button {
+  width: 100%;
+  border-radius: 15%;
+}
+
+.footer_contact_header{
+ font-family: 'Pacifico', cursive;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
