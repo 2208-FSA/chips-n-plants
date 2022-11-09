@@ -22,9 +22,15 @@ const Navbar = () => {
           <nav className="nav_links_container">
             <ul className="nav_links_list">
               {/* these will be links to other pages on site */}
-              <li>shop</li>
-              <li>blog</li>
-              <li>about us</li>
+              <li>
+                <a href="">shop</a>
+              </li>
+              <li>
+                <a href="">blog</a>
+              </li>
+              <li>
+                <a href="">about us</a>
+              </li>
             </ul>
           </nav>
           <div className="nav_logo_container">
@@ -34,8 +40,12 @@ const Navbar = () => {
             />
           </div>
           <div className="nav_user_cart">
-            <span className="material-symbols-outlined">account_circle</span>
-            <span className="material-symbols-outlined">shopping_cart</span>
+            <a href="">
+              <span className="material-symbols-outlined">account_circle</span>
+            </a>
+            <a href="">
+              <span className="material-symbols-outlined">shopping_cart</span>
+            </a>
           </div>
         </div>
       </nav>

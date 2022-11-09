@@ -16,7 +16,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  /* margin: 1em; */
 }
 
 form div {
@@ -63,23 +63,22 @@ form div {
 }
 
 .nav_links_container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .nav_links_list {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-flow: row;
 }
 
 .nav_links_list li {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   list-style: none;
+  padding: 30% 1rem 0;
 }
 
 .nav_links_list li:hover {
-  
 }
-
 
 .nav_logo_container {
   border: 1px solid black;
