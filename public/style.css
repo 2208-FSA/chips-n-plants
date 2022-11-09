@@ -202,3 +202,66 @@ form div {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* CART */ /* CART */ /* CART */
+/* CART */ /* CART */ /* CART */
+/* CART */ /* CART */ /* CART */
+
+.cart_body_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  width: 80%;
+  margin-left: 10%;
+  background-color: rgb(201, 201, 201);
+  justify-content: center;
+}
+.cart_body_items_container {
+  border: 1px solid black;
+  width: 60%;
+}
+.cart_body_payment_container {
+  border: 1px solid black;
+  width: 40%;
+}
+
+.cart_items_heading {
+  border: 1px solid black;
+}
+
+.cart_items_all_container {
+  display: flex;
+  flex-flow: column;
+}
+
+.cart_single_item {
+  border: 1px solid blue;
+  display: flex;
+  flex-flow: row;
+  margin: 1rem;
+  background-color: white;
+}
+
+.cart_item_description {
+  margin-left: 2rem;
+}
+.cart_payment_heading {
+  border: 1px solid black;
+}
+
+.cart_payment_costs_container {
+  display: flex;
+  flex-flow: row;
+}
+.cart_payment_costs_labels {
+  border: 1px solid black;
+  list-style: none;
+}
+.cart_payment_costs_values {
+  border: 1px solid black;
+  list-style: none;
+}
+
+.cart_payment_checkout_btn {
+  background-color: lightgreen;
+}
