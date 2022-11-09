@@ -13,15 +13,15 @@ const Product = db.define('product', {
   },
   productType: {
     type: Sequelize.STRING,
-    allowNull: false
+    
   },
   vendor: {
     type: Sequelize.STRING,
-    allowNull: false
+    
   },
   createdAt: {
     type: Sequelize.DATE,
-    allowNull: false
+    
   },
   price: {
     type: Sequelize.FLOAT,
@@ -29,7 +29,7 @@ const Product = db.define('product', {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    
   },
   rating: {
     type: Sequelize.INTEGER,

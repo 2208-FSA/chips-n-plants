@@ -4,7 +4,7 @@ const db = require('../db')
 const ProductImage = db.define('productImage', {
 
 productId: {
-    type: Sequelize.BINARY,
+    type: Sequelize.INTEGER,
     allowNull: false
 },
 alt: {
