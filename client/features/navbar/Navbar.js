@@ -34,10 +34,7 @@ const Navbar = () => {
             </ul>
           </nav>
           <div className="nav_logo_container">
-            <img
-              className="nav_logo_img"
-              src="./assets/imgs/logos/chips-n-plants-logos/logo.png"
-            />
+            <img className="nav_logo_img" src="./logo.png" />
           </div>
           <div className="nav_user_cart">
             <a href="">
