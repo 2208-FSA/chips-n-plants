@@ -19,3 +19,20 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* MAIN PAGE COMPONENTS */
+.footer {
+  border: 3px solid black;
+}
+
+.footer_logo_social_container {
+  border: 3px solid black;
+}
+
+.footer_nav {
+  border: 3px solid black;
+}
+
+.footer_contact {
+  border: 3px solid black;
+}
