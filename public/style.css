@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -19,3 +23,93 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* NAVBAR */
+.nav_main_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+}
+
+.nav_top_banner_container {
+  border: 1px solid black;
+  background-color: lightgreen;
+}
+
+.nav_body_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.nav_links_container {
+  border: 1px solid black;
+}
+.nav_links_list {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+}
+.nav_links_list li {
+  border: 1px solid black;
+  list-style: none;
+}
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */
+.footer_container {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  height: 400px;
+  width: 100%;
+  padding: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer_logo_social_container {
+  border: 1px solid black;
+  width: 200px;
+}
+
+.footer_nav {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  width: 200px;
+}
+
+.footer_nav ul {
+  width: 100px;
+}
+
+.footer_nav li {
+  border: 1px solid black;
+  list-style: none;
+}
+
+.footer_contact {
+  border: 1px solid black;
+}
+
+.footer_contact_input {
+  border-radius: 15%;
+}
+
+.footer_contact_button {
+  width: 100%;
+  border-radius: 15%;
+}
+
+.footer_contact_header {
+  font-family: "Pacifico", cursive;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
