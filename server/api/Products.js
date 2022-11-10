@@ -17,7 +17,7 @@ router.get("/:id", async (req, res, next) => {
     let productId = req.params.id;
     const singleProduct = await Product.findByPk(productId);
     res.send(singleProduct);
-  } catch (error) {
+  } catch (err) {
     console.log("Error in GET /ID", err);
   }
 });

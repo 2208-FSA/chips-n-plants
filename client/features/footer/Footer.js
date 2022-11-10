@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer_logo_social_container">
         <img
           className="footer_logo"
-          src="./assets/imgs/logos/chips-n-plants-logos/logo.png"
+          src="./logo.png"
         ></img>
         <img className="instagram_logo"></img>
         <img className="facebook_logo"></img>
