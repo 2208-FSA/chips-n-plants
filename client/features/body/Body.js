@@ -1,5 +1,6 @@
 import React from "react"
-// import Product from "../product/Product"
+import Product from "../product/Product"
+
 /**
  * COMPONENT
  */
@@ -14,14 +15,18 @@ const Body = () => {
           deliver 3000g of figer per serving.
         </p>
       </header>
-      <section className="products_container">
-        <article className="single_product">
-          <div className="product_img_container">
-            {/* <img className="product_img" id={Product.img}/> */}
-          </div>
 
-        </article>
+      <section className="products_container">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
       </section>
+
     </main>
   )
 }

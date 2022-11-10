@@ -19,22 +19,30 @@ const Navbar = () => {
           <p> banner text here</p>
         </div>
         <div className="nav_body_container">
-          <div className="nav_links_container">
+          <nav className="nav_links_container">
             <ul className="nav_links_list">
               {/* these will be links to other pages on site */}
-              <li>shop all items</li>
-              <li>blog</li>
-              <li>about us</li>
+              <li>
+                <a href="">shop</a>
+              </li>
+              <li>
+                <a href="">blog</a>
+              </li>
+              <li>
+                <a href="">about us</a>
+              </li>
             </ul>
-          </div>
-          <div className="nav_logo">
-            logo
-            <img src="../../../public/assets/imgs/logos/chips-n-plants-logos/z_placeholder_logo1" />
+          </nav>
+          <div className="nav_logo_container">
+            <img className="nav_logo_img" src="./logo.png" />
           </div>
           <div className="nav_user_cart">
-            user, cart
-            <span className="material-symbols-outlined">account_circle</span>
-            <span className="material-symbols-outlined">shopping_cart</span>
+            <a href="">
+              <span className="material-symbols-outlined">account_circle</span>
+            </a>
+            <a href="">
+              <span className="material-symbols-outlined">shopping_cart</span>
+            </a>
           </div>
         </div>
       </nav>
