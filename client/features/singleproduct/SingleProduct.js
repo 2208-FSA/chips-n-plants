@@ -28,7 +28,7 @@ const SingleProduct = () => {
           />
         </div>
 
-        <h2 classname="product_name">{product.title}</h2>
+        <h2 className="product_name">{product.title}</h2>
         <span className="product_description">{product.description}</span>
         <h3 className="product_rating">{product.rating}</h3>
         <span className="product_price">{product.price}</span>
