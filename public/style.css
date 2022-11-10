@@ -153,6 +153,10 @@ form div {
   width: 100%;
 }
 
+.product_add_to_cart_button{
+  /* background-color: lightgreen; */
+}
+
 /* FOOTER */
 
 .footer_container {
@@ -276,5 +280,5 @@ form div {
 }
 
 .cart_payment_checkout_btn {
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
 }
