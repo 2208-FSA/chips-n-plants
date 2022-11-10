@@ -1,6 +1,6 @@
 "use strict";
 
-const {db, models: { User, Product }} = require("../server/db");
+const {db, models: { User, Product, Orders }} = require("../server/db");
 
 
  // Creating Users
@@ -95,11 +95,42 @@ const products = [
     rating: 4,
   },
 ];
+
+const orders = [
+  {
+    productId: [1, 2, 4],
+    userId:1,
+    billingAddress: '123 chip street',
+    shippingAddress: '123 chip street',
+    productQuantity: 2,
+    status: true,
+    total: 3.46
+  },
+  {
+    productId: [1, 8, 3],
+    userId:2,
+    billingAddress: '123 chip street',
+    shippingAddress: '123 chip street',
+    productQuantity: 6,
+    status: true,
+    total: 45.98
+  },
+  {
+    productId: [4, 8, 2],
+    userId:1,
+    billingAddress: '123 chip street',
+    shippingAddress: '123 chip street',
+    productQuantity: 15,
+    status: true,
+    total: 3000
+  }
+]
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
+  console.log(`seeded ${orders.length} orders`);
   console.log(`seeded successfully`);
 
   await Promise.all(
@@ -112,6 +143,11 @@ async function seed() {
       return Product.create(product);
     })
   );
+  await Promise.all(
+    orders.map((order) => {
+      return Orders.create(order);
+    })
+  )
 }
 
 /*

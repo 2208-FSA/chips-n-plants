@@ -1,9 +1,19 @@
-import React from "react"
+import React from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 /**
  * COMPONENT
  */
 const Cart = () => {
+  const orders = useSelector((state) => {state.orders});
+ 
+  const dispatch = useDispatch();
+
+  
+  
+  
   return (
     <div className="cart_body_container">
       <div className="cart_body_items_container">
@@ -12,7 +22,8 @@ const Cart = () => {
         <div className="cart_items_all_container">
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
-          <div className="cart_single_item">
+          
+            <div className="cart_single_item">
             <img
               width="150px"
               height="150px"
@@ -26,23 +37,6 @@ const Cart = () => {
               <button>Remove item from cart</button>
             </div>
           </div>
-
-          <div className="cart_single_item">
-            <img
-              width="150px"
-              height="150px"
-              className="cart_item_img"
-              src="https://cdn.shopify.com/s/files/1/1952/0115/files/PLNTS_Lime-Hero-4_843d80c7-ebf5-4f52-b028-0c56d848f69a.png?v=1641568430"
-            />
-            <div className="cart_item_description">
-              <p>"$product.cost"</p>
-              <p>"$product.description"</p>
-              <p>"$product.order.quantity"</p>
-              <button>Remove item from cart</button>
-            </div>
-          </div>
-          {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS ABOVE*/}
-          {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS ABOVE*/}
         </div>
       </div>
       <div className="cart_body_payment_container">
@@ -60,7 +54,7 @@ const Cart = () => {
         <button className="cart_payment_checkout_btn">CHECKOUT</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

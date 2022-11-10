@@ -14,11 +14,11 @@ const UserCustomer = require('./models/UserCustomer')
 Orders.belongsTo(User)
 User.hasMany(Orders)
 
-// Orders.hasMany(OrdersProducts)
+Orders.hasMany(OrdersProducts)
 OrdersProducts.hasMany(Orders)
 
 OrdersProducts.hasMany(Product)
-// Product.hasMany(OrdersProducts)
+Product.hasMany(OrdersProducts)
 
 ProductImage.belongsTo(Product)
 
