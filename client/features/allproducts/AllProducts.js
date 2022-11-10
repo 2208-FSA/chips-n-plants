@@ -6,7 +6,7 @@ import { fetchProductsAsync } from "../../slices/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
 /**
- * COMPONENTzz
+ * COMPONENTzzzz
  */
 const AllProducts = () => {
   const products = useSelector((state) => state.products)
