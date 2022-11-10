@@ -1,5 +1,5 @@
 import React from "react"
-import Product from "../product/Product"
+import SingleProduct from "../singleproduct/singleProduct.js"
 
 /**
  * COMPONENT
@@ -17,16 +17,15 @@ const Body = () => {
       </header>
 
       <section className="products_container">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
+        <SingleProduct />
       </section>
-
     </main>
   )
 }
