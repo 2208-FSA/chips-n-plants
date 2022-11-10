@@ -18,16 +18,9 @@ const Body = () => {
       </header>
 
       <section className="products_container">
+
         <AllProducts />
 
-        {/* <SingleProduct />
-        <SingleProduct />
-        <SingleProduct />
-        <SingleProduct />
-        <SingleProduct />
-        <SingleProduct />
-        <SingleProduct />
-        <SingleProduct /> */}
       </section>
     </main>
   )
