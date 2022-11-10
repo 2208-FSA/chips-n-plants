@@ -145,7 +145,7 @@ const products = [
 
 
 /**
- * COMPONENT
+ * COMPONENTz
  */
 const AllProducts = () => {
   // const products = useSelector((state) => state.products)
