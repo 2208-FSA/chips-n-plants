@@ -1,10 +1,12 @@
-"use strict";
+"use strict"
 
-const {db, models: { User, Product, Orders }} = require("../server/db");
+const {
+  db,
+  models: { User, Product, Orders },
+} = require("../server/db")
 
-
- // Creating Users
- const users = [
+// Creating Users
+const users = [
   {
     username: "cody",
     password: "123",
@@ -19,7 +21,7 @@ const {db, models: { User, Product, Orders }} = require("../server/db");
     lastName: "Jones",
     email: "MurphyJones123@gmail.com",
   },
-];
+]
 
 const products = [
   {
@@ -94,58 +96,58 @@ const products = [
     price: 19.99,
     rating: 4,
   },
-];
+]
 
 const orders = [
   {
-    productId: [1, 2, 4],
-    userId:1,
-    billingAddress: '123 chip street',
-    shippingAddress: '123 chip street',
-    productQuantity: 2,
+    // productId: [1, 2, 4],
+    userId: 1,
+    billingAddress: "123 chip street",
+    shippingAddress: "123 chip street",
+    // productQuantity: 2,
     status: true,
-    total: 3.46
+    total: 3.46,
   },
   {
-    productId: [1, 8, 3],
-    userId:2,
-    billingAddress: '123 chip street',
-    shippingAddress: '123 chip street',
-    productQuantity: 6,
+    // productId: [1, 8, 3],
+    userId: 2,
+    billingAddress: "123 chip street",
+    shippingAddress: "123 chip street",
+    // productQuantity: 6,
     status: true,
-    total: 45.98
+    total: 45.98,
   },
   {
-    productId: [4, 8, 2],
-    userId:1,
-    billingAddress: '123 chip street',
-    shippingAddress: '123 chip street',
-    productQuantity: 15,
+    // productId: [4, 8, 2],
+    userId: 1,
+    billingAddress: "123 chip street",
+    shippingAddress: "123 chip street",
+    // productQuantity: 15,
     status: true,
-    total: 3000
-  }
+    total: 3000,
+  },
 ]
 async function seed() {
-  await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
-  console.log(`seeded ${users.length} users`);
-  console.log(`seeded ${products.length} products`);
-  console.log(`seeded ${orders.length} orders`);
-  console.log(`seeded successfully`);
+  await db.sync({ force: true }) // clears db and matches models to tables
+  console.log("db synced!")
+  console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${products.length} products`)
+  console.log(`seeded ${orders.length} orders`)
+  console.log(`seeded successfully`)
 
   await Promise.all(
     users.map((user) => {
-      return User.create(user);
+      return User.create(user)
     })
-  );
+  )
   await Promise.all(
     products.map((product) => {
-      return Product.create(product);
+      return Product.create(product)
     })
-  );
+  )
   await Promise.all(
     orders.map((order) => {
-      return Orders.create(order);
+      return Orders.create(order)
     })
   )
 }
@@ -156,16 +158,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log("seeding...")
   try {
-    await seed();
+    await seed()
   } catch (err) {
-    console.error(err);
-    process.exitCode = 1;
+    console.error(err)
+    process.exitCode = 1
   } finally {
-    console.log("closing db connection");
-    await db.close();
-    console.log("db connection closed");
+    console.log("closing db connection")
+    await db.close()
+    console.log("db connection closed")
   }
 }
 
@@ -175,8 +177,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed();
+  runSeed()
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed;
+module.exports = seed
