@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product, Orders },
+  models: { User, Product, Orders, OrdersProducts },
 } = require("../server/db")
 
 // Creating Users
@@ -127,12 +127,47 @@ const orders = [
     total: 3000,
   },
 ]
+
+const productOrders = [
+  {
+    orderId: 1,
+    productId: 1,
+    quantity: 3,
+    priceAtPurchase: 13.0,
+  },
+  {
+    orderId: 1,
+    productId: 3,
+    quantity: 1,
+    priceAtPurchase: 5.0,
+  },
+  {
+    orderId: 1,
+    productId: 4,
+    quantity: 1,
+    priceAtPurchase: 4.0,
+  },
+  {
+    orderId: 2,
+    productId: 1,
+    quantity: 2,
+    priceAtPurchase: 41.0,
+  },
+  {
+    orderId: 3,
+    productId: 3,
+    quantity: 5,
+    priceAtPurchase: 23.0,
+  },
+]
+
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log("db synced!")
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} products`)
   console.log(`seeded ${orders.length} orders`)
+  console.log(`seeded ${productOrders.length} orders`)
   console.log(`seeded successfully`)
 
   await Promise.all(
@@ -148,6 +183,11 @@ async function seed() {
   await Promise.all(
     orders.map((order) => {
       return Orders.create(order)
+    })
+  )
+  await Promise.all(
+    productOrders.map((productOrder) => {
+      return OrdersProducts.create(productOrder)
     })
   )
 }

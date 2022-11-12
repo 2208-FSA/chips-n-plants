@@ -19,6 +19,12 @@ User.hasMany(Orders)
 // OrdersProducts.hasMany(Product)
 // Product.hasMany(OrdersProducts)
 
+//KL added
+// many to many relationship needs to use "belongsToMany" for both models
+// instead of has many
+Orders.belongsToMany(Product, { through: OrdersProducts })
+Product.belongsToMany(Orders, { through: OrdersProducts })
+
 ProductImage.belongsTo(Product)
 Product.hasMany(ProductImage) // KL added
 
