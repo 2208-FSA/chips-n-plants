@@ -24,11 +24,13 @@ const OrdersProducts = db.define("ordersProducts", {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    // allowNull: false,
+    allowNull: true,
   },
   priceAtPurchase: {
     type: Sequelize.FLOAT,
-    allowNull: false,
+    // allowNull: false,
+    allowNull: true,
   },
 })
 

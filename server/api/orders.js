@@ -13,6 +13,7 @@ router.get("/", async (req, res, next) => {
 })
 
 // gets an order AND its associated products
+// todo probably will need to eventually get a specific user's order in this route
 router.get("/:id", async (req, res, next) => {
   try {
     let orderId = req.params.id
@@ -36,6 +37,21 @@ router.put("/:orderId", async (req, res, next) => {
   try {
     const orderToUpdate = await Orders.findByPk(req.params.orderId)
     res.send(await orderToUpdate.update(req.body))
+  } catch (err) {
+    next(err)
+  }
+})
+
+// todo figure out how to also POST quantity and priceatpruchase. fingure out later...
+//ADD to an order, via POSTING a new product w/ an existing order ID
+router.post("/:orderId/add-product", async (req, res, next) => {
+  try {
+    const orderToAddProduct = await Orders.findByPk(req.params.orderId, {
+      include: Product,
+    })
+    // ! this send is expecting a req.body aka PAYLOAD with productId
+    await orderToAddProduct.addProduct(req.body.productId)
+    res.sendStatus(200)
   } catch (err) {
     next(err)
   }
