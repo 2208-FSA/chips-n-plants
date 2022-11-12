@@ -1,55 +1,54 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import axios from "axios"
 
-const initialState = [];
+const initialState = []
 
 export const fetchOrdersAsync = createAsyncThunk("orders", async () => {
   try {
-    const { data } = await axios.get(`/api/orders`);
-    return data;
+    const { data } = await axios.get(`/api/orders`)
+    return data
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-});
+})
 
-export const addOrdersAsync = createAsyncThunk(
-    'addOrders', async (payload) => {
-      try {
-        const { data } = await axios.post(`/api/orders`, payload);
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  );
+export const addOrdersAsync = createAsyncThunk("addOrders", async (payload) => {
+  try {
+    const { data } = await axios.post(`/api/orders`, payload)
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+})
 
 export const updateOrdersAsync = createAsyncThunk(
-  'orders/updateOrder',
+  "orders/updateOrder",
   async ({
-    orderId, 
-    productId, 
-    userId, 
-    billingAddress, 
-    shippingAddress, 
-    productQuantity, 
-    status, 
-    total }) => {
+    orderId,
+    productId,
+    userId,
+    billingAddress,
+    shippingAddress,
+    productQuantity,
+    status,
+    total,
+  }) => {
     try {
       const { data } = await axios.put(`/api/orders/${orderId}`, {
-        productId, 
+        productId,
         userId,
         billingAddress,
         shippingAddress,
         productQuantity,
         status,
-        total
+        total,
       })
-      return data;
+      return data
     } catch (err) {
       console.log(err)
     }
   }
-);
+)
 
 const ordersSlice = createSlice({
   name: "orders",
@@ -57,16 +56,16 @@ const ordersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOrdersAsync.fulfilled, (state, action) => {
-      return action.payload;
-    });
+      return action.payload
+    })
     builder.addCase(addOrdersAsync.fulfilled, (state, action) => {
-      state.push(action.payload);
-    });
+      state.push(action.payload)
+    })
   },
-});
+})
 
 export const selectOrders = (state) => {
-  return state.orders;
-};
+  return state.orders
+}
 
-export default ordersSlice.reducer;
+export default ordersSlice.reducer

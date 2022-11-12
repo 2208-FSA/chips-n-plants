@@ -43,13 +43,14 @@ router.put("/:orderId", async (req, res, next) => {
 })
 
 // todo figure out how to also POST quantity and priceatpruchase. fingure out later...
-//ADD to an order, via POSTING a new product w/ an existing order ID
-router.post("/:orderId/add-product", async (req, res, next) => {
+//ADD to an order, via POSTING a new product w/ an existing order IDz
+router.post("/:orderId/add_product", async (req, res, next) => {
   try {
     const orderToAddProduct = await Orders.findByPk(req.params.orderId, {
       include: Product,
     })
     // ! this send is expecting a req.body aka PAYLOAD with productId
+    // {"productId":number_here}
     await orderToAddProduct.addProduct(req.body.productId)
     res.sendStatus(200)
   } catch (err) {
