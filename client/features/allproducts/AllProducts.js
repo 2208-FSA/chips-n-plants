@@ -8,6 +8,7 @@ import { fetchProductsAsync } from "../../slices/productsSlice"
 /**
  * COMPONENTzzzz
  */
+
 const AllProducts = () => {
   const products = useSelector((state) => state.products)
   // !!!! add a cart redux state here?
