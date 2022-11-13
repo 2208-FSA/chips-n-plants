@@ -16,7 +16,8 @@ const Cart = () => {
 
   useEffect(() => {
     // TEMPORARY.
-    dispatch(fetchOrdersAsync()) // this is the thunk which will grab the ORDERS slice
+    // probably want to fetch the products of one order for cart
+    dispatch(fetchOrdersAsync()) // this is the thunk which will grab the all the ORDERS slice
   }, [])
 
   // TEMPORARY BELOW
