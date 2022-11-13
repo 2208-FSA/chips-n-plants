@@ -6,7 +6,7 @@ import { fetchProductsAsync } from "../../slices/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
 /**
- * COMPONENTzzzz
+ * COMPONENT
  */
 
 const AllProducts = () => {

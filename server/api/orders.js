@@ -49,8 +49,6 @@ router.post("/:orderId/add_product", async (req, res, next) => {
     const orderToAddProduct = await Orders.findByPk(req.params.orderId, {
       include: Product,
     })
-    // ! this send is expecting a req.body aka PAYLOAD with productId
-    // {"productId":number_here}
     await orderToAddProduct.addProduct(req.body.productId)
     res.sendStatus(200)
   } catch (err) {
