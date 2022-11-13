@@ -4,7 +4,7 @@
 }
 
 html {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 body {
@@ -27,9 +27,10 @@ form div {
 }
 
 /* NAVBAR */
-.nav_main_container {
+.navbar_container {
   display: flex;
   flex-flow: column;
+  border-bottom: 1px solid rgb(117, 117, 117);
 }
 
 .announcement_bar {
@@ -100,6 +101,11 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+
+}
+
+.nav_user_cart a {
+  margin: 1.5rem;
 }
 
 .nav_logo_container {
@@ -111,13 +117,17 @@ nav a {
 }
 
 .material-symbols-outlined {
-  font-size: larger;
+  color:#598000
 }
 
 /* BODY */
 
 .body_header_container {
   text-align: center;
+  margin: 0 auto;
+  background-color: rgba(245, 228, 208, 0.579);
+  margin: 0rem 0 2rem 0;
+  padding: 2rem 4rem 3rem 4rem;
 }
 
 .body_header_big_text {
@@ -129,6 +139,34 @@ nav a {
   font-size: 1rem;
   width: 70%;
 }
+
+/* AUTH FORM */
+
+.auth_form_container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(117, 117, 117);
+}
+
+.auth_form_container form div input {
+  width: 20rem;
+  height: 2.5rem;
+  border: 1px solid #598000;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.auth_form_container form div input:focus {
+  outline: none;
+}
+
+.auth_form_container form div input:hover {
+  border: 1px solid #598000;
+}
+
 
 /* PRODUCTS */
 
