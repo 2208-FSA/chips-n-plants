@@ -13,39 +13,37 @@ const Navbar = () => {
   // }
 
   return (
-    <div>
-      <nav className="nav_main_container">
-        <div className="nav_top_banner_container">
-          <p> banner text here</p>
+    <div className="navbar_container">
+      <div className="announcement_bar">
+        <p> Free standard shipping on all orders over $4000 </p>
+      </div>
+      <div className="nav_body_container">
+        <nav className="nav_links_container">
+          <ul className="nav_links_list">
+            {/* these will be links to other pages on site */}
+            <li>
+              <a href="/shop">shop</a>
+            </li>
+            <li>
+              <a href="/blog">blog</a>
+            </li>
+            <li>
+              <a href="/about-us">about us</a>
+            </li>
+          </ul>
+        </nav>
+        <div className="nav_logo_container">
+          <img className="nav_logo_img" src="./logo.png" />
         </div>
-        <div className="nav_body_container">
-          <nav className="nav_links_container">
-            <ul className="nav_links_list">
-              {/* these will be links to other pages on site */}
-              <li>
-                <a href="">shop</a>
-              </li>
-              <li>
-                <a href="">blog</a>
-              </li>
-              <li>
-                <a href="">about us</a>
-              </li>
-            </ul>
-          </nav>
-          <div className="nav_logo_container">
-            <img className="nav_logo_img" src="./logo.png" />
-          </div>
-          <div className="nav_user_cart">
-            <a href="">
-              <span className="material-symbols-outlined">account_circle</span>
-            </a>
-            <a href="">
-              <span className="material-symbols-outlined">shopping_cart</span>
-            </a>
-          </div>
+        <div className="nav_user_cart">
+          <a href="">
+            <span className="material-symbols-outlined">account_circle</span>
+          </a>
+          <a href="">
+            <span className="material-symbols-outlined">shopping_cart</span>
+          </a>
         </div>
-      </nav>
+      </div>
     </div>
   )
 
