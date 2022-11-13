@@ -13,30 +13,30 @@ export const fetchOrdersAsync = createAsyncThunk("orders", async () => {
 });
 
 export const addOrdersAsync = createAsyncThunk(
-    'addOrders', async (payload) => {
-      try {
-        const { data } = await axios.post(`/api/orders`, payload);
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
+  'addOrders', async (payload) => {
+    try {
+      const { data } = await axios.post(`/api/orders`, payload);
+      return data;
+    } catch (err) {
+      console.log(err);
     }
-  );
+  }
+);
 
 export const updateOrdersAsync = createAsyncThunk(
   'orders/updateOrder',
   async ({
-    orderId, 
-    productId, 
-    userId, 
-    billingAddress, 
-    shippingAddress, 
-    productQuantity, 
-    status, 
+    orderId,
+    productId,
+    userId,
+    billingAddress,
+    shippingAddress,
+    productQuantity,
+    status,
     total }) => {
     try {
       const { data } = await axios.put(`/api/orders/${orderId}`, {
-        productId, 
+        productId,
         userId,
         billingAddress,
         shippingAddress,
@@ -61,6 +61,10 @@ const ordersSlice = createSlice({
     });
     builder.addCase(addOrdersAsync.fulfilled, (state, action) => {
       state.push(action.payload);
+    });
+    builder.addCase(updateOrdersAsync.fulfilled, (state, action) => {
+      const index = state.findIndex((order) => order.id === action.payload.id);
+      state[index] = action.payload;
     });
   },
 });

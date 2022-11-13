@@ -3,9 +3,6 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-/**
- * COMPONENT
- */
 const SingleProduct = () => {
   const [product, setProduct] = useState({})
   const { id } = useParams()
@@ -18,14 +15,22 @@ const SingleProduct = () => {
     fetchProduct();
   }, [id])
 
+// clicking a product image will take you to the single product view page
+// this is done by using the product id as a parameter in the url
+// the product id is passed in as a prop from the product component
+// the product id is then used to fetch the product from the database
+// the product is then set to state and rendered on the page
+
   return (
     <div>
       <article className="single_product">
         <div className="product_img_container">
+          <a href={`/products/${product.id}`}>
           <img
             className="product_img"
             src="https://cdn.shopify.com/s/files/1/1952/0115/files/PLNTS_Lime-Hero-4_843d80c7-ebf5-4f52-b028-0c56d848f69a.png?v=1641568430"
           />
+          </a>
         </div>
 
         <h2 className="product_name">{product.title}</h2>
@@ -33,6 +38,7 @@ const SingleProduct = () => {
         <h3 className="product_rating">{product.rating}</h3>
         <span className="product_price">{product.price}</span>
       </article>
+      
     </div>
   )
 }

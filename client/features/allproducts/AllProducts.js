@@ -5,6 +5,7 @@ import { fetchProductsAsync } from "../../slices/productsSlice"
 // import { deleteProduct } from "../store/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
+
 /**
  * COMPONENTzzzz
  */
@@ -36,6 +37,13 @@ const AllProducts = () => {
     dispatch(fetchProductsAsync())
   }, [])
 
+
+  // clicking a product image will take you to the single product view page
+  // this is done by using the product id as a parameter in the url
+  // the product id is passed in as a prop from the product component
+  // the product id is then used to fetch the product from the database
+  // the product is then set to state and rendered on the page
+
   return (
     <div>
       <h1>ALL PRODUCTS</h1>
@@ -45,7 +53,9 @@ const AllProducts = () => {
             <div key={product.id}>
               <article className="single_product">
                 <div className="product_img_container">
-                  <img className="product_img" src={product.imageUrl} />
+                  <Link to={`/products/${product.id}`}>
+                    <img className="product_img" src={product.imageUrl} />
+                  </Link>
                 </div>
 
                 <h2 className="product_name">{product.title}</h2>

@@ -36,10 +36,10 @@ const Navbar = () => {
           <img className="nav_logo_img" src="./logo.png" />
         </div>
         <div className="nav_user_cart">
-          <a href="">
+          <a href="/account">
             <span className="material-symbols-outlined">account_circle</span>
           </a>
-          <a href="">
+          <a href="/cart">
             <span className="material-symbols-outlined">shopping_cart</span>
           </a>
         </div>

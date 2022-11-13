@@ -3,6 +3,8 @@ const {
   models: { Product },
 } = require("../db");
 
+// GET /api/products
+
 router.get("/", async (req, res, next) => {
   try {
     const allProducts = await Product.findAll();
@@ -12,15 +14,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// GET /api/products/:id
+
 router.get("/:id", async (req, res, next) => {
   try {
-    let productId = req.params.id;
-    const singleProduct = await Product.findByPk(productId);
+    const singleProduct = await Product.findByPk(req.params.id);
     res.send(singleProduct);
   } catch (err) {
-    console.log("Error in GET /ID", err);
+    console.log("Error in GET SINGLE", err);
   }
 });
+
+// POST /api/products
 
 router.post("/", async (req, res, next) => {
   try {
@@ -31,6 +36,29 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// PUT /api/products/:id
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const updatedProduct = await Product
+      .findByPk(req.params.id)
+      .then((product) => product.update(req.body));
+    res.send(updatedProduct);
+  } catch (err) {
+    console.log("Error in PUT", err);
+  }
+});
+
+// DELETE /api/products/:id
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    await Product.destroy({ where: { id: req.params.id } });
+    res.sendStatus(204);
+  } catch (err) {
+    console.log("Error in DELETE", err);
+  }
+});
 
 
 module.exports = router;
