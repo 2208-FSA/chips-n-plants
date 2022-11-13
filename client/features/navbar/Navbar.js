@@ -33,7 +33,9 @@ const Navbar = () => {
           </ul>
         </nav>
         <div className="nav_logo_container">
-          <img className="nav_logo_img" src="./logo.png" />
+          <a href="/">
+            <img className="nav_logo_img" src="./logo.png" />
+          </a>
         </div>
         <div className="nav_user_cart">
           <a href="/account">

@@ -38,7 +38,8 @@ const SingleProductView = () => {
       <p>{product.description}</p>
       <p>{product.price}</p>
       <p>{product.quantity}</p>
-      <Link to="/products">Back to Products</Link>
+      <p>{product.rating}</p>
+      <Link to={`/products/${product.id}/edit`}>Edit</Link>
     </div>
   )
 }
