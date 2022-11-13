@@ -15,20 +15,8 @@ const Cart = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // TEMPORARY.
-    // probably want to fetch the products of one order for cart
-    dispatch(fetchOrdersAsync()) // this is the thunk which will grab the all the ORDERS slice
+    dispatch(fetchOrdersAsync()) // todo this thunk is currently grabbing all the ORDER slice, we just want one order
   }, [])
-
-  // TEMPORARY BELOW
-  console.log("==========orders state==========", orders)
-  function handleAddProduct(event) {
-    event.preventDefault()
-    console.log("=======button clicked in component level")
-    const a = { payloadOrderId: 1, payloadProductId: 9 }
-    dispatch(addProductToOrderAsync(a))
-  }
-  //TEMPORARY ABOVE
 
   return (
     <div className="cart_body_container">
@@ -38,14 +26,6 @@ const Cart = () => {
         <div className="cart_items_all_container">
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
-
-          {/* TEMPORARY */}
-          <form onSubmit={handleAddProduct}>
-            <button type="submit" onClick={() => {}}>
-              add product
-            </button>
-          </form>
-          {/* TEMPORARY */}
 
           <div className="cart_single_item">
             <img

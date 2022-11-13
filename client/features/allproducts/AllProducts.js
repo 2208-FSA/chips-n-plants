@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductsAsync } from "../../slices/productsSlice"
+import {
+  fetchOrdersAsync,
+  addProductToOrderAsync,
+} from "../../slices/ordersSlice.js"
 // import { deleteProduct } from "../store/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
@@ -11,17 +15,19 @@ import { fetchProductsAsync } from "../../slices/productsSlice"
 
 const AllProducts = () => {
   const products = useSelector((state) => state.products)
-  // !!!! add a cart redux state here?
+  const orders = useSelector((state) => state.orders)
   const [addProductId, setAddProductId] = useState(0)
 
   const dispatch = useDispatch()
 
-  // !!!!!!! add the thunk HERE FOR WHEN WE CONNECT CART TO A DATABASE
+  // todo fix only one instance of product adding
+  // ! adds product... but only if there is no instance of that same prodID already
   async function handleAddToCart(event) {
     event.preventDefault()
-    console.log("===========hi===========")
 
-    // dispatch(ADD_TO_CART_THUNK_HERE(addProductId))
+    // ! need to dynamically get a cart here ==========, in place of hardcoded order ID 1
+    const a = { payloadOrderId: 1, payloadProductId: addProductId }
+    dispatch(addProductToOrderAsync(a))
   }
 
   // const handleDelete = (productId) => {
@@ -53,8 +59,8 @@ const AllProducts = () => {
                 <span className="product_description">
                   {product.description}
                 </span>
-                <h3 className="product_rating">{product.rating}</h3>
-                <span className="product_price">{product.price}</span>
+                <h3 className="product_rating">RATING: {product.rating}</h3>
+                <span className="product_price">${product.price}</span>
                 <form onSubmit={handleAddToCart}>
                   <button
                     type="submit"
