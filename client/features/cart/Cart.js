@@ -15,7 +15,7 @@ const Cart = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchOrdersAsync()) // todo this thunk is currently grabbing all the ORDER slice, we just want one order
+    dispatch(fetchOrdersAsync()) // todo this thunk is currently grabbing all the ORDER slice, we just want one order to populate the cart
   }, [])
 
   return (
@@ -26,7 +26,6 @@ const Cart = () => {
         <div className="cart_items_all_container">
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
-
           <div className="cart_single_item">
             <img
               width="150px"

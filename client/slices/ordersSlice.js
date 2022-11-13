@@ -27,23 +27,21 @@ export const addProductToOrderAsync = createAsyncThunk(
   "addProductToOrder",
   async (payload) => {
     try {
-      //payload in the axios post will be received as req.body
-      console.log("=============== I AM IN THE THUNK THUNK ===========")
+      // payload in the axios post will be received as req.body
       // console.log("payload", payload)
       const { payloadOrderId, payloadProductId } = payload
-      // console.log("payload order id", payloadOrderId)
-      // console.log("payload product id", payloadProductId)
-
       const payloadToSend = { productId: payloadProductId }
-
       const { data } = await axios.post(
         `/api/orders/${payloadOrderId}/add_product`,
         payloadToSend
       )
       console.log("DATA", data)
 
+      // todo 1. we dont have a orders_products state. do we want one?
+      // todo 2. if so, we need to make a new slice for it? We might want to move addProductToOrderAsync thunk to that instead
+      // todo 3. and then change this return to send the updated productID added to let the state know
       // return in the thunk gets sent to the extra reducer builder as... action.payload?
-      // return should not be data. data from an axiospost is just gonna be OK
+      // return should not be data. data from an axiospost is just gonna be "OK"
       // return ....
       return data
     } catch (err) {

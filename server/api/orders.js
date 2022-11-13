@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
 })
 
 // gets an order AND its associated products
-// todo probably will need to eventually get a specific user's order in this route
 router.get("/:id", async (req, res, next) => {
   try {
     let orderId = req.params.id
