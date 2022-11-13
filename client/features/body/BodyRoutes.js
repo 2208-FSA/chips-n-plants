@@ -1,4 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../../app/store';
+import { Route, Routes } from 'react-router-dom';
+import Body from './Body';
+import SingleProductView from '../singleproductview/SingleProductView';
+import AllProducts from '../allproducts/AllProducts';
 
+const BodyRoutes = () => {
+
+    return (
+        <div>
+            <Routes>
+                <Route path="*" element={<AllProducts />} />
+                <Route path="/products/:productId" element={<SingleProductView />} />
+
+
+            </Routes>
+
+        </div>
+    );
+};
+
+export default BodyRoutes;

@@ -7,17 +7,7 @@ const SingleProduct = () => {
   const dispatch = useDispatch()
   const [product, setProduct] = useState({})
   const { id } = useParams();
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-  const [addProductId, setAddProductId] = useState(0)
-  const [quantity, setQuantity] = useState(0)
-  const [edit, setEdit] = useState(false)
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [price, setPrice] = useState(0)
-  const [rating, setRating] = useState(0)
-  const [imageUrl, setImageUrl] = useState("")
-  const [description, setDescription] = useState("")
+
 
   useEffect(() => {
     const fetchProduct = async () => {
