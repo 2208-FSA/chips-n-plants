@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Body from './Body';
 import SingleProductView from '../singleproductview/SingleProductView';
 import AllProducts from '../allproducts/AllProducts';
+import AuthForm from '../auth/AuthForm';
 
 const BodyRoutes = () => {
 
@@ -11,10 +12,7 @@ const BodyRoutes = () => {
             <Routes>
                 <Route path="*" element={<AllProducts />} />
                 <Route path="/products/:productId" element={<SingleProductView />} />
-
-
             </Routes>
-
         </div>
     );
 };
