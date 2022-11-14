@@ -13,7 +13,7 @@ const Cart = () => {
 
   const dispatch = useDispatch()
 
-  // THIS IS TEMPORARY
+  // THIS IS TEMPORARYz
   // THIS IS TEMPORARY
   // THIS IS TEMPORARY
   const temporary = { orderId: 3 }
