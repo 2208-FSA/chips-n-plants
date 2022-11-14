@@ -43,10 +43,7 @@ const SingleProduct = () => {
       <article className="single_product">
         <div className="product_img_container">
           <Link to={`/products/${product.id}`}>
-            <img
-              className="product_img"
-              src="https://cdn.shopify.com/s/files/1/1952/0115/files/PLNTS_Lime-Hero-4_843d80c7-ebf5-4f52-b028-0c56d848f69a.png?v=1641568430"
-            />
+          <img className="product_img" src={product.imageUrl} />
           </Link>
         </div>
 

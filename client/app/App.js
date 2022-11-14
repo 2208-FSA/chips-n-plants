@@ -12,8 +12,6 @@ const App = () => {
       <AppRoutes />
       <Body />
       <Footer />
-      {/* BELOW CART IS TEMPORARY */}
-      <Cart />
     </div>
   )
 }
