@@ -9,14 +9,13 @@ import {
 // import { deleteProduct } from "../store/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
-
 /**
  * COMPONENTz
  */
 
 const AllProducts = () => {
   const products = useSelector((state) => state.products)
-  const orders = useSelector((state) => state.orders)
+  const orders = useSelector((state) => state.orders) // probably need to add state.orders.allOrders
   const [addProductId, setAddProductId] = useState(0)
 
   const dispatch = useDispatch()
@@ -43,7 +42,6 @@ const AllProducts = () => {
   useEffect(() => {
     dispatch(fetchProductsAsync())
   }, [])
-
 
   // clicking a product image will take you to the single product view page
   // this is done by using the product id as a parameter in the url
