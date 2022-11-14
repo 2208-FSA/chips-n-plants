@@ -10,7 +10,7 @@ import {
 // import { editProduct } from "../store/productsSlice"
 
 /**
- * COMPONENT
+ * COMPONENTz
  */
 
 const AllProducts = () => {
