@@ -12,6 +12,7 @@ export const fetchOrdersAsync = createAsyncThunk("orders", async () => {
   }
 })
 
+
 export const addOrdersAsync = createAsyncThunk("addOrders", async (payload) => {
   try {
     const { data } = await axios.post(`/api/orders`, payload)
@@ -50,6 +51,7 @@ export const addProductToOrderAsync = createAsyncThunk(
   }
 )
 
+
 export const updateOrdersAsync = createAsyncThunk(
   "orders/updateOrder",
   async ({
@@ -60,8 +62,10 @@ export const updateOrdersAsync = createAsyncThunk(
     shippingAddress,
     productQuantity,
     status,
+
     total,
   }) => {
+
     try {
       const { data } = await axios.put(`/api/orders/${orderId}`, {
         productId,
@@ -90,6 +94,7 @@ const ordersSlice = createSlice({
       return action.payload
     })
     builder.addCase(addOrdersAsync.fulfilled, (state, action) => {
+
       state.push(action.payload)
     })
     builder.addCase(addProductToOrderAsync.fulfilled, (state, action) => {
@@ -98,6 +103,7 @@ const ordersSlice = createSlice({
       // ! not sure if we need to update the state when product is added to an order?
       // ! just make sure we re-fetch an updated single order when product is added
     })
+
   },
 })
 

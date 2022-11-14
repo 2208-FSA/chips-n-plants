@@ -1,6 +1,7 @@
 import React from "react"
 import SingleProduct from "../singleproduct/singleProduct.js"
 import AllProducts from "../allproducts/AllProducts.js"
+import BodyRoutes from "./BodyRoutes.js"
 
 /**
  * COMPONENT
@@ -19,7 +20,7 @@ const Body = () => {
 
       <section className="products_container">
 
-        <AllProducts />
+        <BodyRoutes />
 
       </section>
     </main>

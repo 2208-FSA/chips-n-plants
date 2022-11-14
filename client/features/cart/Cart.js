@@ -6,10 +6,8 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
-/**
- * COMPONENT
- */
 const Cart = () => {
+
   const orders = useSelector((state) => state.orders)
 
   const dispatch = useDispatch()
@@ -39,24 +37,26 @@ const Cart = () => {
               <p>"$product.order.quantity"</p>
               <button>Remove item from cart</button>
             </div>
+
           </div>
         </div>
       </div>
-      <div className="cart_body_payment_container">
-        <h3 className="cart_payment_heading">TOTAL</h3>
-        <div className="cart_payment_costs_container">
-          <ul className="cart_payment_costs_labels">
-            <li>Sub-total</li>
-            <li>Shipping</li>
-          </ul>
-          <ul className="cart_payment_costs_values">
-            <li>"$TOTAL_COST_HERE"</li>
-            <li>"$SHIPPING_COST"</li>
-          </ul>
-        </div>
-        <button className="cart_payment_checkout_btn">CHECKOUT</button>
-      </div>
     </div>
+    <div className="cart_body_payment_container">
+      <h3 className="cart_payment_heading">TOTAL</h3>
+      <div className="cart_payment_costs_container">
+        <ul className="cart_payment_costs_labels">
+          <li>Sub-total</li>
+          <li>Shipping</li>
+        </ul>
+        <ul className="cart_payment_costs_values">
+          <li>"$TOTAL_COST_HERE"</li>
+          <li>"$SHIPPING_COST"</li>
+        </ul>
+      </div>
+      <button className="cart_payment_checkout_btn">CHECKOUT</button>
+    </div>
+
   )
 }
 

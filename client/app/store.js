@@ -5,6 +5,7 @@ import ordersSlice from '../slices/ordersSlice';
 import productsSlice from '../slices/productsSlice';
 import singleProductSlice from '../slices/singleProductSlice';
 
+
 const store = configureStore({
   reducer: { 
     auth: authReducer,
