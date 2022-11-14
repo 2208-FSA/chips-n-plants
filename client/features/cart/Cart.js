@@ -1,19 +1,23 @@
-import React from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import React from "react"
+import {
+  fetchOrdersAsync,
+  addProductToOrderAsync,
+} from "../../slices/ordersSlice.js"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 
 /**
  * COMPONENT
  */
 const Cart = () => {
-  const orders = useSelector((state) => {state.orders});
- 
-  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders)
 
-  
-  
-  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchOrdersAsync()) // todo this thunk is currently grabbing all the ORDER slice, we just want one order to populate the cart
+  }, [])
+
   return (
     <div className="cart_body_container">
       <div className="cart_body_items_container">
@@ -22,8 +26,7 @@ const Cart = () => {
         <div className="cart_items_all_container">
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
           {/* TO RECIEVE AN ARRAY OF STATE ITEMS IN CART TO BE MAPPED AS BELOW*/}
-          
-            <div className="cart_single_item">
+          <div className="cart_single_item">
             <img
               width="150px"
               height="150px"
@@ -54,7 +57,7 @@ const Cart = () => {
         <button className="cart_payment_checkout_btn">CHECKOUT</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
