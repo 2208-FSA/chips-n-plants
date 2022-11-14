@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 **/
 
 const SignUpForm = ({ name, displayName }) => {
-  const { error } = useSelector((state) => state.auth);
+  const { error } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
@@ -18,7 +18,10 @@ const SignUpForm = ({ name, displayName }) => {
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
+    const firstName = evt.target.firstName.value;
+    const lastName = evt.target.lastName.value;
+    const email = evt.target.email.value
+    dispatch(authenticate({ username, password, firstName, lastName, email }));
   };
 
   return (

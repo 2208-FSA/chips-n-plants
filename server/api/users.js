@@ -8,10 +8,19 @@ router.get('/', async (req, res, next) => {
       // explicitly select only the id and username fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'username']
+      attributes: ['id', 'username', 'email', 'firstName', 'lastName']
     })
     res.json(users)
   } catch (err) {
     next(err)
   }
 })
+
+router.post("/", async (req, res, next) => {
+  try {
+    const newUser= await User.create(req.body);
+    res.send(newUser);
+  } catch (err) {
+    console.log("Error in POST/User", err);
+  }
+});
