@@ -24,3 +24,14 @@ router.post("/", async (req, res, next) => {
     console.log("Error in POST/User", err);
   }
 });
+
+
+router.get("/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const oneUser = await User.findByPk(userId);
+    res.send(oneUser);
+  } catch (error) {
+    console.log("Error in GET /api/users/id.js :(\n\n", error);
+  }
+});
