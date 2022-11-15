@@ -24,17 +24,12 @@ const Cart = () => {
     dispatch(fetchOrderAndProductsAsync(temporary))
   }, [])
 
-  console.log(orderProducts)
-
   const subTotal = orderProducts.reduce((sumTotal, curElement) => {
     return (sumTotal += curElement.price)
   }, 0)
   const roundedSubtotal = subTotal.toFixed(2)
-  console.log(roundedSubtotal)
-
   const shippingTotal = roundedSubtotal / 10
   const roundedShippingTotal = shippingTotal.toFixed(2)
-
   const grandTotal = subTotal + shippingTotal
   const roundedGrandTotal = grandTotal.toFixed(2)
 
@@ -42,7 +37,9 @@ const Cart = () => {
     <div className="cart_full_body_container">
       <div className="cart_body_container">
         <div className="cart_body_items_container">
-          <div className="cart_items_heading">My Order</div>
+          <div className="cart_items_heading">
+            My Order: {orderProducts.length} items
+          </div>
           <div className="cart_items_all_container">
             {orderProducts.map((singleProduct) => {
               return (
