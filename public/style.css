@@ -9,6 +9,7 @@ html {
 
 body {
   font-family: sans-serif;
+  height: 100vh;
 }
 
 a {
@@ -21,7 +22,7 @@ label {
 
 form div {
   margin: 1em;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 /* NAVBAR */
@@ -231,9 +232,6 @@ nav a {
   list-style: none;
 }
 
-.footer_nav ul {
-}
-
 .footer_contact {
   width: 200px;
   height: fit-content;
@@ -343,6 +341,52 @@ nav a {
   text-align: right;
 }
 
-.cart_payment_checkout_btn {
-  /* background-color: lightgreen; */
+/* SIGN UP FORM */
+
+.signup_form_container {
+  display: flex;
+  width: 25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 3px solid #598000;
+}
+
+.signup_form_container form div input {
+  width: 20rem;
+  height: 2.5rem;
+  border: 1px solid #598000;
+  border-radius: 0.5rem;
+  padding: 0;
+}
+
+.signup_form_container form div input:focus {
+  outline: none;
+}
+
+.signup_form_container form div input:hover {
+  border: 1px solid #598000;
+}
+
+.signUpButton {
+  display: flex;
+  justify-content: center;
+}
+
+.signup_page_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app,
+.app {
+  height: 100vh;
+}
+
+.SignupH3 {
+  text-align: center;
+  margin-bottom: 5px;
 }
