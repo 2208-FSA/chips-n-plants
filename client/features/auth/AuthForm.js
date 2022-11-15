@@ -36,7 +36,7 @@ const AuthForm = ({ name, displayName }) => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button type="submit">Submit</button>
         </div>
         {error && <div> {error} </div>}
       </form>

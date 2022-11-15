@@ -17,4 +17,4 @@ const BodyRoutes = () => {
   )
 }
 
-export default BodyRoutes
+export default BodyRoutes;
