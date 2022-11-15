@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const initialState = []
+const initialState = {
+  allOrders: [],
+  orderProducts: [],
+}
 
 export const fetchOrdersAsync = createAsyncThunk("orders", async () => {
   try {
@@ -12,7 +15,6 @@ export const fetchOrdersAsync = createAsyncThunk("orders", async () => {
   }
 })
 
-
 export const addOrdersAsync = createAsyncThunk("addOrders", async (payload) => {
   try {
     const { data } = await axios.post(`/api/orders`, payload)
@@ -21,6 +23,24 @@ export const addOrdersAsync = createAsyncThunk("addOrders", async (payload) => {
     console.log(err)
   }
 })
+
+//!!!!!
+// this thunk grabs an order and its products
+
+// this thunk will be given a payload that is the orderID
+// RECIVE FROM dispatch: orderID, as payload
+export const fetchOrderAndProductsAsync = createAsyncThunk(
+  "orderAndProducts",
+  async (payload) => {
+    try {
+      const { orderId } = payload
+      const { data } = await axios.get(`/api/orders/${orderId}`)
+      return data.products
+    } catch (err) {
+      console.log(err)
+    }
+  }
+)
 
 // "/:orderId/add_product"
 // component will give (orderId, productId)
@@ -51,7 +71,6 @@ export const addProductToOrderAsync = createAsyncThunk(
   }
 )
 
-
 export const updateOrdersAsync = createAsyncThunk(
   "orders/updateOrder",
   async ({
@@ -65,7 +84,6 @@ export const updateOrdersAsync = createAsyncThunk(
 
     total,
   }) => {
-
     try {
       const { data } = await axios.put(`/api/orders/${orderId}`, {
         productId,
@@ -91,19 +109,25 @@ const ordersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOrdersAsync.fulfilled, (state, action) => {
-      return action.payload
+      state.allOrders = action.payload
+      // return action.payload
     })
     builder.addCase(addOrdersAsync.fulfilled, (state, action) => {
-
-      state.push(action.payload)
+      state.allOrders.push(action.payload)
     })
+
+    // recieves the return from the thunk as, action.payload?
+    builder.addCase(fetchOrderAndProductsAsync.fulfilled, (state, action) => {
+      // return action.payload
+      state.orderProducts = action.payload
+    })
+
     builder.addCase(addProductToOrderAsync.fulfilled, (state, action) => {
       console.log("======IM IN THE addProductToOrderAsync BUILDER=======")
       console.log(JSON.parse(JSON.stringify(state)))
       // ! not sure if we need to update the state when product is added to an order?
       // ! just make sure we re-fetch an updated single order when product is added
     })
-
   },
 })
 
