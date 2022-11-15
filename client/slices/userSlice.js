@@ -16,6 +16,7 @@ export const fetchUsersAsync = createAsyncThunk("users", async () => {
 export const addUsersAsync = createAsyncThunk("addUsers", async (payload) => {
   try {
     const { data } = await axios.post(`/api/users`, payload)
+   
     return data
   } catch (err) {
     console.log(err)
