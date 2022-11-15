@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../../app/store';
 import { Link } from 'react-router-dom';
-import { addUsersAsync } from '../../slices/userSlice';
+import { authenticate } from '../auth/authSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -16,12 +15,14 @@ const SignUpForm = ({ name }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
     const firstName = evt.target.firstName.value;
     const lastName = evt.target.lastName.value;
     const email = evt.target.email.value
-    dispatch(addUsersAsync({ username, password, firstName, lastName, email }));
+    
+    dispatch(authenticate({username, password, method: "signup", firstName, lastName, email}));
   };
 
   return (
