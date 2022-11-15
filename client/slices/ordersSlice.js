@@ -56,7 +56,7 @@ export const addProductToOrderAsync = createAsyncThunk(
         `/api/orders/${payloadOrderId}/add_product`,
         payloadToSend
       )
-      console.log("DATA", data)
+      // console.log("DATA", data)
 
       // todo 1. we dont have a orders_products state. do we want one?
       // todo 2. if so, we need to make a new slice for it? We might want to move addProductToOrderAsync thunk to that instead
@@ -123,8 +123,8 @@ const ordersSlice = createSlice({
     })
 
     builder.addCase(addProductToOrderAsync.fulfilled, (state, action) => {
-      console.log("======IM IN THE addProductToOrderAsync BUILDER=======")
-      console.log(JSON.parse(JSON.stringify(state)))
+      // console.log("======IM IN THE addProductToOrderAsync BUILDER=======")
+      // console.log(JSON.parse(JSON.stringify(state)))
       // ! not sure if we need to update the state when product is added to an order?
       // ! just make sure we re-fetch an updated single order when product is added
     })
