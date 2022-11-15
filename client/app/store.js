@@ -1,22 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
-import authReducer from '../features/auth/authSlice';
-import ordersSlice from '../slices/ordersSlice';
-import productsSlice from '../slices/productsSlice';
-import singleProductSlice from '../slices/singleProductSlice';
-import userSlice from '../slices/userSlice';
-
+import { configureStore } from "@reduxjs/toolkit"
+import logger from "redux-logger"
+import authReducer from "../features/auth/authSlice"
+import ordersSlice from "../slices/ordersSlice"
+import productsSlice from "../slices/productsSlice"
+import singleProductSlice from "../slices/singleProductSlice"
+import userSlice from "../slices/userSlice"
 
 const store = configureStore({
-  reducer: { 
+  reducer: {
     auth: authReducer,
     products: productsSlice,
-    singleProduct: singleProductSlice, 
+    singleProduct: singleProductSlice,
     orders: ordersSlice,
-    users: userSlice
-   },
+    users: userSlice,
+  },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-});
+})
 
-export default store;
-export * from '../features/auth/authSlice';
+export default store
+export * from "../features/auth/authSlice"
+
+// ^^^ this exports all NAMED exports from authSlice. which includes "authenticate" thunktion
