@@ -56,7 +56,7 @@ const Cart = () => {
                   <div className="cart_item_description">
                     <h3>{singleProduct.title}</h3>
                     <p>{singleProduct.description}</p>
-                    <p>{singleProduct.price}</p>
+                    <p>${singleProduct.price}</p>
                     <br></br>
                     <br></br>
                     <button className="cart_remove_item_button">
