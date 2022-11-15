@@ -5,24 +5,36 @@ import {
   fetchOrderAndProductsAsync,
 } from "../../slices/ordersSlice.js"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
+  const DEFAULT_ORDER_ID = 1
+  // state controllers
+  const [deleteProdId, setDeleteProdId] = useState(0)
+  const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
+
   const dispatch = useDispatch()
 
-  // THIS IS TEMPORARYz
   // THIS IS TEMPORARY
-  // THIS IS TEMPORARY
-  const temporary = { orderId: 1 }
+  let userOrderId = { orderId: orderIdState }
 
   useEffect(() => {
-    //dispatch the fetch single order, give it the order ID as the payload
-    // SEND to THUNK: orderID
-    dispatch(fetchOrderAndProductsAsync(temporary))
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
   }, [])
+
+  console.log(orderProducts)
+
+  async function handleRemove(event) {
+    event.preventDefault()
+    console.log("clicked the remove from cart button")
+
+    // ! dispatch delete product from orderID thunk below
+    // ! probably need to send both orderId and ProdId
+    // dispatch()
+  }
 
   const subTotal = orderProducts.reduce((sumTotal, curElement) => {
     return (sumTotal += curElement.price)
@@ -56,9 +68,18 @@ const Cart = () => {
                     <p>${singleProduct.price}</p>
                     <br></br>
                     <br></br>
-                    <button className="cart_remove_item_button">
-                      Remove from cart
-                    </button>
+
+                    <form onSubmit={handleRemove}>
+                      <button
+                        type="submit"
+                        className="cart_remove_item_button"
+                        onClick={() => {
+                          setDeleteProdId(singleProduct.id)
+                        }}
+                      >
+                        Remove from cart
+                      </button>
+                    </form>
                   </div>
                 </div>
               )
