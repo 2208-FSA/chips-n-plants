@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../../app/store';
 import { Link } from 'react-router-dom';
+import { addUsersAsync } from '../../slices/userSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -9,24 +10,23 @@ import { Link } from 'react-router-dom';
   Props for Sign up: name="signup", displayName="Sign Up"
 **/
 
-const SignUpForm = ({ name, displayName }) => {
-  const { error } = useSelector((state) => state.users);
+const SignUpForm = ({ name }) => {
+
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
     const firstName = evt.target.firstName.value;
     const lastName = evt.target.lastName.value;
     const email = evt.target.email.value
-    dispatch(authenticate({ username, password, firstName, lastName, email }));
+    dispatch(addUsersAsync({ username, password, firstName, lastName, email }));
   };
 
   return (
       <>
-      <h1>Sign Up!</h1>
+      
     <div className="signup_page_container">
       <div className="signup_form_container">
         <form className="signup_form" onSubmit={handleSubmit} name={name}>
@@ -64,7 +64,7 @@ const SignUpForm = ({ name, displayName }) => {
           <button type="submit">Submit</button>
             </div>
           <h3 className='SignupH3'>Already a user? <Link className='Link' to={"/login"}>Sign-In!</Link></h3>
-          {error && <div> {error} </div>}
+          
         </form>
       </div>
     </div>
