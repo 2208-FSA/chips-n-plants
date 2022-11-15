@@ -2,6 +2,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
+ require('dotenv').config()
+
+
+
 
 const SALT_ROUNDS = 5;
 
@@ -50,7 +54,9 @@ User.prototype.correctPassword = function (candidatePwd) {
 }
 
 User.prototype.generateToken = function () {
+  console.log('*****', process.env.JWT)
   return jwt.sign({ id: this.id }, process.env.JWT)
+  
 }
 
 /**
@@ -90,6 +96,7 @@ const hashPassword = async (user) => {
     user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
   }
 }
+
 
 User.beforeCreate(hashPassword)
 User.beforeUpdate(hashPassword)
