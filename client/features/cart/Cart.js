@@ -7,12 +7,14 @@ import {
 } from "../../slices/ordersSlice.js"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { me } from '../../app/store';
 
 const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
   // todo needs to grab the order of a user. probably via an API route sequelize query
+  const userId = useSelector((state) => state.auth.me.id);
   // todo then do >>>>> setOrder(fetchedUserIdOrderID)
   const DEFAULT_ORDER_ID = 1
   const [deleteProdId, setDeleteProdId] = useState(0)
@@ -69,7 +71,7 @@ const Cart = () => {
                     <p>Quantity: {singleProduct.ordersProducts.quantity}</p>
 
                     <br></br>
-
+                    <input type="number" min="0" max="100" />
                     <form onSubmit={handleRemove}>
                       <button
                         type="submit"

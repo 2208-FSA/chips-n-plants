@@ -6,6 +6,7 @@ import {
   fetchOrdersAsync,
   fetchOrderAndProductsAsync,
   addProductToOrderAsync,
+  addProductQuantityToOrderAsync,
 } from "../../slices/ordersSlice.js"
 // import { deleteProduct } from "../store/productsSlice"
 // import { editProduct } from "../store/productsSlice"
@@ -41,21 +42,31 @@ const AllProducts = () => {
 
     if (doesProductExistInCartAlready) {
       // todo instead of adding entire product to cart, we need to update via api route
-      console.log(
-        "====== the find is true, found: ",
-        addProductId,
-        doesProductExistInCartAlready
-      )
-      console.log("we just want to update the quantity")
-      console.log(doesProductExistInCartAlready.ordersProducts.quantity)
+      // console.log(
+      //   "====== the find is true, found: ",
+      //   addProductId,
+      //   doesProductExistInCartAlready
+      // )
+      // console.log("we just want to update the quantity")
+      // console.log(doesProductExistInCartAlready.ordersProducts.quantity)
 
       const newQuantity =
         doesProductExistInCartAlready.ordersProducts.quantity + 1
 
       // send this newQuantity as req.body to the API route to update the product with
+      // get the quantity here and get he value to update it with, then send it to the API
       console.log(newQuantity)
 
-      // get the quantity here and get he value to update it with, then send it to the API
+      const payloadToSend = {
+        orderId: orderIdState,
+        productId: addProductId,
+        quantity: newQuantity,
+      }
+
+      console.log("========= I am in the handle add to cart =========== ")
+      console.log(payloadToSend)
+
+      dispatch(addProductQuantityToOrderAsync(payloadToSend))
     } else {
       // only adds full new product if did not find it already in the cart
       const thunkPayload = {

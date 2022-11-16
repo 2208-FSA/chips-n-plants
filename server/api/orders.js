@@ -62,24 +62,41 @@ router.post("/:orderId/add_product", async (req, res, next) => {
 // gets an order AND its associated products, to update quantity
 // recieve req.body.productId
 // api route should access the orderId
+
+// ! ////////////////////////////////////////////////
+// 1. Using the prodID target it's quantity.
+// 2. use instance.update to update that quantity
+
+// api/orders/:orderId/add_quantity
+
+// recieves quantity and productID
 router.put("/:orderId/add_quantity", async (req, res, next) => {
   try {
+    console.log("I AM IN THE API ADD PRODUCT TO ORDER QUANTITY ==========")
+    console.log(req.body)
+
     let orderId = req.params.orderId
     const singleOrder = await Orders.findByPk(orderId, {
-      include: [
-        {
-          model: Product,
-          // model: OrdersProducts,
-        },
-      ],
+      include: Product,
+      // model: OrdersProducts,
       // where: {productId: 1,},
     })
 
+    if (!singleOrder) {
+      res.status(404).send("Order not found to update")
+      return
+    }
+
     console.log("=================")
     console.log("prod ID to add: ", req.body.productId)
+    console.log("quantity to add: ", req.body.quantity)
+    // console.log(singleOrder.products)
     // console.log(singleOrder)
 
-    res.send(singleOrder)
+    // later, req.body is going to have "newQuantity"
+    //
+
+    res.status(200).send(singleOrder.update(req.body))
   } catch (err) {
     console.log("Error in PUT /:orderId/add_quantity", err)
   }
