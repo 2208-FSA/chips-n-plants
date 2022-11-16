@@ -1,6 +1,6 @@
 # FS-App-Template
 
-## Setup
+## Setupz
 
 To use this as boilerplate, you'll need to take the following steps:
 
@@ -16,8 +16,6 @@ git fetch boilermaker
 git merge boilermaker/main
 git branch -m master main
 ```
-
-
 
 ## Customize
 
