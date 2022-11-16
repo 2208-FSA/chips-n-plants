@@ -13,7 +13,7 @@ const Cart = () => {
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
   const DEFAULT_ORDER_ID = 1
-  // state controllers
+  // state controllersz
   const [deleteProdId, setDeleteProdId] = useState(0)
   const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
 
