@@ -13,7 +13,7 @@ const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
-  // todo needs to grab the order of a user. probably via an API route sequelize query
+  // todo needs to grab the order of a user. probably via an API route sequelize queryz
   const userId = useSelector((state) => state.auth.me.id)
 
   // ! hey the userId should be above !!!
