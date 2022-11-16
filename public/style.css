@@ -105,7 +105,7 @@ nav a {
 }
 
 .nav_logo_container {
-  /* border: 1px solid black; */
+/* border: 1px solid black; */
 }
 
 .nav_logo_img {
@@ -119,8 +119,8 @@ nav a {
 .account_login_nav_button {
   width: 100px;
   text-align: center;
-  border: 1px solid black;
   font-size: 1.2rem;
+  padding: 1rem;
 }
 
 

@@ -26,7 +26,7 @@ Orders.belongsToMany(Product, { through: OrdersProducts })
 Product.belongsToMany(Orders, { through: OrdersProducts })
 
 ProductImage.belongsTo(Product)
-Product.hasMany(ProductImage) // KL added
+Product.hasMany(ProductImage)
 
 module.exports = {
   db,
