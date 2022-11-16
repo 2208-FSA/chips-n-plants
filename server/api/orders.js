@@ -76,11 +76,22 @@ router.put("/:orderId/add_quantity", async (req, res, next) => {
     console.log(req.body)
 
     let orderId = req.params.orderId
-    const singleOrder = await Orders.findByPk(orderId, {
-      include: Product,
-      // model: OrdersProducts,
-      // where: {productId: 1,},
+    // const singleOrder = await Orders.findByPk(orderId, {
+    //   include: Product,
+    //   // model: OrdersProducts,
+    //   // where: {productId: 1,},
+    // })
+
+    const singleOrder = await OrdersProducts.findOne({
+      where: {
+        productId: req.body.productId,
+        orderId: orderId,
+      },
     })
+
+    // just search in ordersprocut and querry for orderId productID fool.
+
+    console.log("singleORder: ", singleOrder)
 
     if (!singleOrder) {
       res.status(404).send("Order not found to update")
@@ -88,15 +99,16 @@ router.put("/:orderId/add_quantity", async (req, res, next) => {
     }
 
     console.log("=================")
-    console.log("prod ID to add: ", req.body.productId)
-    console.log("quantity to add: ", req.body.quantity)
+    console.log("prod ID to update: ", req.body.productId)
+    console.log("quantity to update: ", req.body.quantity)
     // console.log(singleOrder.products)
     // console.log(singleOrder)
 
     // later, req.body is going to have "newQuantity"
-    //
 
-    res.status(200).send(singleOrder.update(req.body))
+    // res.status(200).send(singleOrder.update(req.body))
+    singleOrder.update({ quantity: req.body.quantity })
+    res.send(singleOrder)
   } catch (err) {
     console.log("Error in PUT /:orderId/add_quantity", err)
   }
