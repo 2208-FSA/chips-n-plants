@@ -42,7 +42,7 @@ const Cart = () => {
   }
 
   const subTotal = orderProducts.reduce((sumTotal, curElement) => {
-    return (sumTotal += curElement.price)
+    return (sumTotal += curElement.price * curElement.ordersProducts.quantity)
   }, 0)
   const roundedSubtotal = subTotal.toFixed(2)
   const shippingTotal = roundedSubtotal / 10
