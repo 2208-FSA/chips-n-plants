@@ -1,16 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
 import { logout } from "../../app/store"
+import { me } from '../../app/store';
 
 const Navbar = () => {
-  // const isLoggedIn = useSelector((state) => !!state.auth.me.id)
-  // const dispatch = useDispatch()
-  // const navigate = useNavigate()
-  // const logoutAndRedirectHome = () => {
-  //   dispatch(logout())
-  //   navigate("/login")
-  // }
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.auth.me.username);
+
+  useEffect(() => {
+    dispatch(me());
+  }, []);
+
+  const handleLogout = (evt) => {
+    evt.preventDefault();
+    dispatch(logout());
+  }
 
   return (
     <div className="navbar_container">
@@ -41,6 +46,12 @@ const Navbar = () => {
           <a href="/account">
             <span className="material-symbols-outlined">account_circle</span>
           </a>
+          <button className="account_login_nav_button">
+            {isLoggedIn ? <a className="account_login_nav_button" href="/account">Hello, {username}</a>:<a className="account_login_nav_button" href="/login">Sign In</a>}
+          </button>
+          <form onSubmit={handleLogout}>
+            <button type='submit'>Logout User</button>
+          </form>
           <a href="/cart">
             <span className="material-symbols-outlined">shopping_cart</span>
           </a>
@@ -48,32 +59,6 @@ const Navbar = () => {
       </div>
     </div>
   )
-
-  // return (
-  //   <div>
-  //     <h1>FS-App-Template</h1>
-
-  //     <nav>
-  //       {isLoggedIn ? (
-  //         <div>
-  //           {/* The navbar will show these links after you log in */}
-  //           <Link to="/home">Home</Link>
-  //           <button type="button" onClick={logoutAndRedirectHome}>
-  //             Logout
-  //           </button>
-  //         </div>
-  //       ) : (
-  //         <div>
-  //           {/* The navbar will show these links before you log in */}
-  //           <Link to="/login">Login</Link>
-  //           <Link to="/signup">Sign Up</Link>
-  //         </div>
-  //       )}
-  //     </nav>
-
-  //     <hr />
-  //   </div>
-  // )
 }
 
 export default Navbar

@@ -60,7 +60,8 @@ export const authSlice = createSlice({
   },
   reducers: {
     logout(state, action) {
-      window.localStorage.removeItem(TOKEN);
+      // This prevented login from working --->
+      // window.localStorage.removeItem(TOKEN);
       state.me = {};
       state.error = null;
     },

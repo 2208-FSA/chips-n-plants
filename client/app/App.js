@@ -25,7 +25,7 @@ const App = () => {
           }
         ></Route>
         <Route
-          path="/"
+          path="*"
           element={
             <>
               <Navbar />
