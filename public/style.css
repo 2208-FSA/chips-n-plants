@@ -116,6 +116,14 @@ nav a {
   color: #598000;
 }
 
+.account_login_nav_button {
+  width: 100px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 1.2rem;
+}
+
+
 /* BODY */
 
 .body_header_container {
