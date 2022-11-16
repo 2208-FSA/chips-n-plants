@@ -12,6 +12,8 @@ const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
+  // todo needs to grab the order of a user. probably via an API route sequelize query
+  // todo then do >>>>> setOrder(fetchedUserIdOrderID)
   const DEFAULT_ORDER_ID = 1
   const [deleteProdId, setDeleteProdId] = useState(0)
   const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)

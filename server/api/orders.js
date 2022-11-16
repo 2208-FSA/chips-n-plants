@@ -41,6 +41,10 @@ router.put("/:orderId", async (req, res, next) => {
   }
 })
 
+// =============================================================================
+// ======================= product order specific routes =======================
+// =============================================================================
+
 //ADD a new product to order
 router.post("/:orderId/add_product", async (req, res, next) => {
   try {
@@ -51,6 +55,33 @@ router.post("/:orderId/add_product", async (req, res, next) => {
     res.sendStatus(200)
   } catch (err) {
     next(err)
+  }
+})
+
+// todo //////////////////////
+// gets an order AND its associated products, to update quantity
+// recieve req.body.productId
+// api route should access the orderId
+router.put("/:orderId/add_quantity", async (req, res, next) => {
+  try {
+    let orderId = req.params.orderId
+    const singleOrder = await Orders.findByPk(orderId, {
+      include: [
+        {
+          model: Product,
+          // model: OrdersProducts,
+        },
+      ],
+      // where: {productId: 1,},
+    })
+
+    console.log("=================")
+    console.log("prod ID to add: ", req.body.productId)
+    // console.log(singleOrder)
+
+    res.send(singleOrder)
+  } catch (err) {
+    console.log("Error in PUT /:orderId/add_quantity", err)
   }
 })
 

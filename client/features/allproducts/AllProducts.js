@@ -22,6 +22,8 @@ const AllProducts = () => {
 
   const dispatch = useDispatch()
 
+  // todo also fetch the UserIdorderId
+
   // user/order ID grabbing here
   const DEFAULT_ORDER_ID = 1
   const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
@@ -45,6 +47,15 @@ const AllProducts = () => {
         doesProductExistInCartAlready
       )
       console.log("we just want to update the quantity")
+      console.log(doesProductExistInCartAlready.ordersProducts.quantity)
+
+      const newQuantity =
+        doesProductExistInCartAlready.ordersProducts.quantity + 1
+
+      // send this newQuantity as req.body to the API route to update the product with
+      console.log(newQuantity)
+
+      // get the quantity here and get he value to update it with, then send it to the API
     } else {
       // only adds full new product if did not find it already in the cart
       const thunkPayload = {
