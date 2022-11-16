@@ -117,15 +117,6 @@ const orders = [
     status: true,
     total: 45.98,
   },
-  {
-    // productId: [4, 8, 2],
-    userId: 1,
-    billingAddress: "123 chip street",
-    shippingAddress: "123 chip street",
-    // productQuantity: 15,
-    status: true,
-    total: 3000,
-  },
 ]
 
 const productOrders = [
@@ -152,12 +143,6 @@ const productOrders = [
     productId: 1,
     quantity: 2,
     priceAtPurchase: 41.0,
-  },
-  {
-    orderId: 3,
-    productId: 3,
-    quantity: 5,
-    priceAtPurchase: 23.0,
   },
 ]
 

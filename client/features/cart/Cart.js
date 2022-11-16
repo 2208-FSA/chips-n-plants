@@ -3,6 +3,7 @@ import {
   fetchOrdersAsync,
   addProductToOrderAsync,
   fetchOrderAndProductsAsync,
+  removeProductFromOrderAsync,
 } from "../../slices/ordersSlice.js"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
@@ -29,11 +30,11 @@ const Cart = () => {
 
   async function handleRemove(event) {
     event.preventDefault()
-    console.log("clicked the remove from cart button")
-
-    // ! dispatch delete product from orderID thunk below
-    // ! probably need to send both orderId and ProdId
-    // dispatch()
+    const removePayload = { orderId: orderIdState, productId: deleteProdId }
+    console.log("=======clicked button, handle remove", removePayload)
+    dispatch(removeProductFromOrderAsync(removePayload))
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
+    dispatch(fetchOrderAndProductsAsync(userOrderId)) // this is not a typo, it is a hacky way to solve an edgecase bug not updating the view...
   }
 
   const subTotal = orderProducts.reduce((sumTotal, curElement) => {
