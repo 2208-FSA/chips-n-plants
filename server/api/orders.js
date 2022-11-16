@@ -55,4 +55,19 @@ router.post("/:orderId/add_product", async (req, res, next) => {
   }
 })
 
+// for now only fully remove an item
+router.put("/:orderId/remove_product", async (req, res, next) => {
+  try {
+    const orderToRemoveProduct = await Orders.findByPk(req.params.orderId, {
+      include: Product,
+    })
+    // // see the magic methods
+    // console.log(Object.keys(orderToRemoveProduct.__proto__))
+    await orderToRemoveProduct.removeProduct(req.body.productId)
+    res.sendStatus(200)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

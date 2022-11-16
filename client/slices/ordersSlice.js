@@ -24,11 +24,7 @@ export const addOrdersAsync = createAsyncThunk("addOrders", async (payload) => {
   }
 })
 
-//!!!!!
 // this thunk grabs an order and its products
-
-// this thunk will be given a payload that is the orderID
-// RECIVE FROM dispatch: orderID, as payload
 export const fetchOrderAndProductsAsync = createAsyncThunk(
   "orderAndProducts",
   async (payload) => {
@@ -43,7 +39,6 @@ export const fetchOrderAndProductsAsync = createAsyncThunk(
 )
 
 // "/:orderId/add_product"
-// component will give (orderId, productId)
 export const addProductToOrderAsync = createAsyncThunk(
   "addProductToOrder",
   async (payload) => {
@@ -56,17 +51,31 @@ export const addProductToOrderAsync = createAsyncThunk(
         `/api/orders/${payloadOrderId}/add_product`,
         payloadToSend
       )
-      console.log("DATA", data)
+      // console.log("DATA", data)
 
-      // todo 1. we dont have a orders_products state. do we want one?
-      // todo 2. if so, we need to make a new slice for it? We might want to move addProductToOrderAsync thunk to that instead
-      // todo 3. and then change this return to send the updated productID added to let the state know
       // return in the thunk gets sent to the extra reducer builder as... action.payload?
-      // return should not be data. data from an axiospost is just gonna be "OK"
-      // return ....
       return data
     } catch (err) {
       console.log(err)
+    }
+  }
+)
+
+export const removeProductFromOrderAsync = createAsyncThunk(
+  "removeProductFromOrder",
+  async (payload) => {
+    try {
+      console.log("============= in the thunk")
+      console.log(payload)
+
+      const { data } = await axios.put(
+        `/api/orders/${payload.orderId}/remove_product`,
+        payload
+      )
+      // console.log("data return", data)
+      return "return of remove product thunk"
+    } catch (error) {
+      console.log(error)
     }
   }
 )
@@ -123,8 +132,8 @@ const ordersSlice = createSlice({
     })
 
     builder.addCase(addProductToOrderAsync.fulfilled, (state, action) => {
-      console.log("======IM IN THE addProductToOrderAsync BUILDER=======")
-      console.log(JSON.parse(JSON.stringify(state)))
+      // console.log("======IM IN THE addProductToOrderAsync BUILDER=======")
+      // console.log(JSON.parse(JSON.stringify(state)))
       // ! not sure if we need to update the state when product is added to an order?
       // ! just make sure we re-fetch an updated single order when product is added
     })

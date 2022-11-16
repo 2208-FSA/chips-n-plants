@@ -7,15 +7,14 @@ import { useDispatch, useSelector } from "react-redux"
 const SingleProductView = () => {
   const dispatch = useDispatch()
   const [product, setProduct] = useState({})
-  const { id } = useParams();
-
+  const { id } = useParams()
 
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await axios.get(`/api/products/${id}`)
-      setProduct(data);
-    };
-    fetchProduct();
+      setProduct(data)
+    }
+    fetchProduct()
   }, [id])
 
   const handleAddToCart = (event) => {
@@ -51,19 +50,15 @@ const SingleProductView = () => {
           </Link>
         </div>
 
-
         <h2 className="product_name">{product.title}</h2>
         <span className="product_description">{product.description}</span>
         <h3 className="product_rating">{product.rating}</h3>
         <span className="product_price">{product.price}</span>
-        <button onClick={() => handleDelete(student.id)}>Delete</button>
-        <button onClick={() => handleEdit(student.id)}>Edit</button>
+        <button onClick={() => handleDelete(product.id)}>Delete</button>
+        <button onClick={() => handleEdit(product.id)}>Edit</button>
       </article>
     </div>
   )
 }
 
 export default SingleProductView
-
-
-

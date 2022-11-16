@@ -3,32 +3,56 @@ import {
   fetchOrdersAsync,
   addProductToOrderAsync,
   fetchOrderAndProductsAsync,
+  removeProductFromOrderAsync,
 } from "../../slices/ordersSlice.js"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
+  const DEFAULT_ORDER_ID = 1
+  // state controllersz
+  const [deleteProdId, setDeleteProdId] = useState(0)
+  const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
+
   const dispatch = useDispatch()
 
-  // THIS IS TEMPORARYz
   // THIS IS TEMPORARY
-  // THIS IS TEMPORARY
-  const temporary = { orderId: 3 }
+  let userOrderId = { orderId: orderIdState }
 
   useEffect(() => {
-    //dispatch the fetch single order, give it the order ID as the payload
-    // SEND to THUNK: orderID
-    dispatch(fetchOrderAndProductsAsync(temporary))
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
   }, [])
 
+  console.log(orderProducts)
+
+  async function handleRemove(event) {
+    event.preventDefault()
+    const removePayload = { orderId: orderIdState, productId: deleteProdId }
+    console.log("=======clicked button, handle remove", removePayload)
+    dispatch(removeProductFromOrderAsync(removePayload))
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
+    dispatch(fetchOrderAndProductsAsync(userOrderId)) // this is not a typo, it is a hacky way to solve an edgecase bug not updating the view...
+  }
+
+  const subTotal = orderProducts.reduce((sumTotal, curElement) => {
+    return (sumTotal += curElement.price)
+  }, 0)
+  const roundedSubtotal = subTotal.toFixed(2)
+  const shippingTotal = roundedSubtotal / 10
+  const roundedShippingTotal = shippingTotal.toFixed(2)
+  const grandTotal = subTotal + shippingTotal
+  const roundedGrandTotal = grandTotal.toFixed(2)
+
   return (
-    <div>
+    <div className="cart_full_body_container">
       <div className="cart_body_container">
         <div className="cart_body_items_container">
-          <div className="cart_items_heading">HEADING: My Order of Items</div>
+          <div className="cart_items_heading">
+            My Order: {orderProducts.length} items
+          </div>
           <div className="cart_items_all_container">
             {orderProducts.map((singleProduct) => {
               return (
@@ -40,10 +64,23 @@ const Cart = () => {
                     src={singleProduct.imageUrl}
                   />
                   <div className="cart_item_description">
-                    <p>{singleProduct.title}</p>
-                    <p>{singleProduct.price}</p>
+                    <h3>{singleProduct.title}</h3>
                     <p>{singleProduct.description}</p>
-                    <button>Remove item from cart</button>
+                    <p>${singleProduct.price}</p>
+                    <br></br>
+                    <br></br>
+
+                    <form onSubmit={handleRemove}>
+                      <button
+                        type="submit"
+                        className="cart_remove_item_button"
+                        onClick={() => {
+                          setDeleteProdId(singleProduct.id)
+                        }}
+                      >
+                        Remove from cart
+                      </button>
+                    </form>
                   </div>
                 </div>
               )
@@ -56,12 +93,14 @@ const Cart = () => {
         <h3 className="cart_payment_heading">TOTAL</h3>
         <div className="cart_payment_costs_container">
           <ul className="cart_payment_costs_labels">
-            <li>Sub-total</li>
+            <li>Subtotal</li>
             <li>Shipping</li>
+            <li>Grand Total</li>
           </ul>
           <ul className="cart_payment_costs_values">
-            <li>"$TOTAL_COST_HERE"</li>
-            <li>"$SHIPPING_COST"</li>
+            <li>${roundedSubtotal}</li>
+            <li>${roundedShippingTotal}</li>
+            <li>${roundedGrandTotal}</li>
           </ul>
         </div>
         <button className="cart_payment_checkout_btn">CHECKOUT</button>

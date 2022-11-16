@@ -26,7 +26,7 @@ const users = [
 const products = [
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Lime-2048.png",
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_Lime-2048_700x.png?v=1640105013",
     title: "Lime Tortilla Chips",
     description: "Yummy lime chips",
     price: 19.99,
@@ -34,66 +34,66 @@ const products = [
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Ranch Tortilla Chips",
-    description: "Yummy ranch chips",
-    price: 19.99,
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_Lime-2048_700x.png?v=1640105013",
+    title: "Hot Spicy Tortilla Chips",
+    description: "Hot chips",
+    price: 29.99,
     rating: 3,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_Nacho-2048_700x.png?v=1640104703",
     title: "Nacho Tortilla Chips",
     description: "Yummy nacho chips",
-    price: 19.99,
+    price: 39.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_PT_Front_BeetGoat-2048_700x.png?v=1640104100",
+    title: "Beet Tortilla Chips",
     description: "Yummy nacho chips",
-    price: 19.99,
+    price: 49.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_SeaSalt-2048_700x.png?v=1640104577",
+    title: "Sea Salt Tortilla Chips",
     description: "Yummy nacho chips",
-    price: 19.99,
+    price: 59.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
-    description: "Yummy nacho chips",
-    price: 19.99,
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_Lime-2048_700x.png?v=1640105013",
+    title: "Salsa Tortilla Chip",
+    description: "Do the Salsa",
+    price: 69.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
-    description: "Yummy nacho chips",
-    price: 19.99,
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Front_Lime-2048_700x.png?v=1640105013",
+    title: "Plain Tortilla Chips",
+    description: "Chips",
+    price: 79.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_PT_Front_Cheddar-2048_700x.png?v=1640103926",
+    title: "Cheddar Tortilla Chips",
     description: "Yummy nacho chips",
-    price: 19.99,
+    price: 89.99,
     rating: 4,
   },
   {
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_TC_Back_Ranch-2048.png",
-    title: "Nacho Tortilla Chips",
-    description: "Yummy nacho chips",
-    price: 19.99,
+      "https://cdn.shopify.com/s/files/1/1952/0115/products/PS_PT_Front_Superseeds-2048_700x.png?v=1640104285",
+    title: "Super Seed Chips",
+    description: "Seedy chips",
+    price: 99.99,
     rating: 4,
   },
 ]
@@ -116,15 +116,6 @@ const orders = [
     // productQuantity: 6,
     status: true,
     total: 45.98,
-  },
-  {
-    // productId: [4, 8, 2],
-    userId: 1,
-    billingAddress: "123 chip street",
-    shippingAddress: "123 chip street",
-    // productQuantity: 15,
-    status: true,
-    total: 3000,
   },
 ]
 
@@ -152,12 +143,6 @@ const productOrders = [
     productId: 1,
     quantity: 2,
     priceAtPurchase: 41.0,
-  },
-  {
-    orderId: 3,
-    productId: 3,
-    quantity: 5,
-    priceAtPurchase: 23.0,
   },
 ]
 
