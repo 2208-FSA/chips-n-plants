@@ -13,7 +13,6 @@ const Cart = () => {
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
   const DEFAULT_ORDER_ID = 1
-  // state controllersz
   const [deleteProdId, setDeleteProdId] = useState(0)
   const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
 
@@ -25,8 +24,6 @@ const Cart = () => {
   useEffect(() => {
     dispatch(fetchOrderAndProductsAsync(userOrderId))
   }, [])
-
-  console.log(orderProducts)
 
   async function handleRemove(event) {
     event.preventDefault()
@@ -67,7 +64,8 @@ const Cart = () => {
                     <h3>{singleProduct.title}</h3>
                     <p>{singleProduct.description}</p>
                     <p>${singleProduct.price}</p>
-                    <br></br>
+                    <p>Quantity: {singleProduct.ordersProducts.quantity}</p>
+
                     <br></br>
 
                     <form onSubmit={handleRemove}>

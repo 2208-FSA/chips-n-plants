@@ -41,8 +41,7 @@ router.put("/:orderId", async (req, res, next) => {
   }
 })
 
-// todo figure out how to also POST quantity and priceatpruchase. fingure out later...
-//ADD to an order, via POSTING a new product w/ an existing order IDz
+//ADD a new product to order
 router.post("/:orderId/add_product", async (req, res, next) => {
   try {
     const orderToAddProduct = await Orders.findByPk(req.params.orderId, {
@@ -61,7 +60,7 @@ router.put("/:orderId/remove_product", async (req, res, next) => {
     const orderToRemoveProduct = await Orders.findByPk(req.params.orderId, {
       include: Product,
     })
-    // // see the magic methods
+    // see the magic methods
     // console.log(Object.keys(orderToRemoveProduct.__proto__))
     await orderToRemoveProduct.removeProduct(req.body.productId)
     res.sendStatus(200)
