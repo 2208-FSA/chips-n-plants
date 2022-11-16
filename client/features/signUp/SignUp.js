@@ -21,7 +21,6 @@ const SignUpForm = ({ name }) => {
     const firstName = evt.target.firstName.value;
     const lastName = evt.target.lastName.value;
     const email = evt.target.email.value
-    
     dispatch(authenticate({username, password, method: "signup", firstName, lastName, email}));
   };
 
@@ -65,7 +64,6 @@ const SignUpForm = ({ name }) => {
           <button type="submit">Submit</button>
             </div>
           <h3 className='SignupH3'>Already a user? <Link className='Link' to={"/login"}>Sign-In!</Link></h3>
-          
         </form>
       </div>
     </div>

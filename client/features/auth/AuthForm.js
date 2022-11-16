@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../../app/store';
+import { me } from './authSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -17,7 +17,10 @@ const AuthForm = ({ name, displayName }) => {
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
+    //dispatch(authenticate({username, password, method: "login"}));
+    dispatch(me({ username, password, method: "login" }));
+    // location.replace("https://www.w3schools.com")
+    window.location.href = "/"
   };
 
   return (
