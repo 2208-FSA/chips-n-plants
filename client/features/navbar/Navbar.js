@@ -25,12 +25,11 @@ const Navbar = () => {
       <div className="nav_body_container">
         <nav className="nav_links_container">
           <ul className="nav_links_list">
-            {/* these will be links to other pages on site */}
-            <li>
-              <a href="/shop">shop</a>
-            </li>
             <li>
               <a href="/signup">Log-in/Sign-up</a>
+            </li>
+            <li>
+              <a href="/shop">shop</a>
             </li>
             <li>
               <a href="/about-us">about us</a>
@@ -43,18 +42,25 @@ const Navbar = () => {
           </a>
         </div>
         <div className="nav_user_cart">
-          <a href="/account">
-            <span className="material-symbols-outlined">account_circle</span>
-          </a>
+
           <button className="account_login_nav_button">
-            {isLoggedIn ? <a className="account_login_nav_button" href="/account">Hello, {username}</a>:<a className="account_login_nav_button" href="/login">Sign In</a>}
+            {isLoggedIn ? <a href="/account">Hello, {username}</a> : <a href="/login">Sign In</a>}
           </button>
+
           <form onSubmit={handleLogout}>
-            <button type='submit'>Logout User</button>
+            <button className="account_login_nav_button" type='submit'>Logout</button>
           </form>
+
+          <div className="nav_user_container">
+            <a href="/account">
+              <span className="material-symbols-outlined">account_circle</span>
+            </a>
+          </div>
+
           <a href="/cart">
             <span className="material-symbols-outlined">shopping_cart</span>
           </a>
+
         </div>
       </div>
     </div>
