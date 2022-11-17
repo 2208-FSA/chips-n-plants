@@ -7,13 +7,19 @@ import {
 } from "../../slices/ordersSlice.js"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { me } from "../../app/store"
 
 const Cart = () => {
   const orders = useSelector((state) => state.orders.allOrders)
   const orderProducts = useSelector((state) => state.orders.orderProducts)
 
+  // todo needs to grab the order of a user. probably via an API route sequelize queryz
+  const userId = useSelector((state) => state.auth.me.id)
+
+  // ! hey the userId should be above !!!
+  // todo then do >>>>> setOrder(fetchedUserIdOrderID)
+
   const DEFAULT_ORDER_ID = 1
-  // state controllersz
   const [deleteProdId, setDeleteProdId] = useState(0)
   const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
 
@@ -25,8 +31,6 @@ const Cart = () => {
   useEffect(() => {
     dispatch(fetchOrderAndProductsAsync(userOrderId))
   }, [])
-
-  console.log(orderProducts)
 
   async function handleRemove(event) {
     event.preventDefault()
@@ -67,9 +71,10 @@ const Cart = () => {
                     <h3>{singleProduct.title}</h3>
                     <p>{singleProduct.description}</p>
                     <p>${singleProduct.price}</p>
-                    <br></br>
-                    <br></br>
+                    <p>Quantity: {singleProduct.ordersProducts.quantity}</p>
 
+                    <br></br>
+                    <input type="number" min="0" max="100" />
                     <form onSubmit={handleRemove}>
                       <button
                         type="submit"

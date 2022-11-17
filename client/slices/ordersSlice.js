@@ -61,6 +61,29 @@ export const addProductToOrderAsync = createAsyncThunk(
   }
 )
 
+// api/orders/:orderId/add_quantity
+export const addProductQuantityToOrderAsync = createAsyncThunk(
+  "addProductQuantityToOrderAsync",
+  async (payload) => {
+    try {
+      console.log("i am in the thunk =========== ")
+      console.log("payload", payload)
+      const { orderId, productId, quantity } = payload
+      const payloadToApi = {
+        quantity: quantity,
+        productId: productId,
+      }
+      const { data } = await axios.put(
+        `api/orders/${orderId}/add_quantity`,
+        payloadToApi
+      )
+      return data // ! remember this return goes to the thunk
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
 export const removeProductFromOrderAsync = createAsyncThunk(
   "removeProductFromOrder",
   async (payload) => {
@@ -137,6 +160,10 @@ const ordersSlice = createSlice({
       // ! not sure if we need to update the state when product is added to an order?
       // ! just make sure we re-fetch an updated single order when product is added
     })
+    // builder.addCase(
+    //   addProductQuantityToOrderAsync.fulfilled,
+    //   (state, action) => {}
+    // )
   },
 })
 

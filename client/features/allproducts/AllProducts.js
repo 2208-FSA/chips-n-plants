@@ -4,30 +4,79 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchProductsAsync } from "../../slices/productsSlice"
 import {
   fetchOrdersAsync,
+  fetchOrderAndProductsAsync,
   addProductToOrderAsync,
+  addProductQuantityToOrderAsync,
 } from "../../slices/ordersSlice.js"
 // import { deleteProduct } from "../store/productsSlice"
 // import { editProduct } from "../store/productsSlice"
 
 /**
- * COMPONENTz
+ * COMPONENT
  */
 
 const AllProducts = () => {
   const products = useSelector((state) => state.products)
   const orders = useSelector((state) => state.orders) // probably need to add state.orders.allOrders
+  const orderProducts = useSelector((state) => state.orders.orderProducts)
   const [addProductId, setAddProductId] = useState(0)
 
   const dispatch = useDispatch()
 
-  // todo fix only one instance of product adding
-  // ! adds product... but only if there is no instance of that same prodID already
+  // todo also fetch the UserIdorderId
+
+  // user/order ID grabbing here
+  const DEFAULT_ORDER_ID = 1
+  const [orderIdState, setOrderId] = useState(DEFAULT_ORDER_ID)
+  let userOrderId = { orderId: orderIdState }
+
   async function handleAddToCart(event) {
     event.preventDefault()
 
-    // ! need to dynamically get a cart here ==========, in place of hardcoded order ID 1
-    const a = { payloadOrderId: 1, payloadProductId: addProductId }
-    dispatch(addProductToOrderAsync(a))
+    // check if product exists in order
+    console.log("===== orderproducts before add to cart", orderProducts)
+    console.log("===== current product trying to add: ", addProductId)
+    const doesProductExistInCartAlready = orderProducts.find(
+      (curElement) => curElement.id === addProductId
+    )
+
+    if (doesProductExistInCartAlready) {
+      // todo instead of adding entire product to cart, we need to update via api route
+      // console.log(
+      //   "====== the find is true, found: ",
+      //   addProductId,
+      //   doesProductExistInCartAlready
+      // )
+      // console.log("we just want to update the quantity")
+      // console.log(doesProductExistInCartAlready.ordersProducts.quantity)
+
+      const newQuantity =
+        doesProductExistInCartAlready.ordersProducts.quantity + 1
+
+      // send this newQuantity as req.body to the API route to update the product with
+      // get the quantity here and get he value to update it with, then send it to the API
+      console.log(newQuantity)
+
+      const payloadToSend = {
+        orderId: orderIdState,
+        productId: addProductId,
+        quantity: newQuantity,
+      }
+
+      console.log("========= I am in the handle add to cart =========== ")
+      console.log(payloadToSend)
+
+      dispatch(addProductQuantityToOrderAsync(payloadToSend))
+    } else {
+      // only adds full new product if did not find it already in the cart
+      const thunkPayload = {
+        payloadOrderId: orderIdState,
+        payloadProductId: addProductId,
+      }
+      dispatch(addProductToOrderAsync(thunkPayload))
+    }
+
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
   }
 
   // const handleDelete = (productId) => {
@@ -41,13 +90,10 @@ const AllProducts = () => {
 
   useEffect(() => {
     dispatch(fetchProductsAsync())
+    dispatch(fetchOrderAndProductsAsync(userOrderId))
   }, [])
 
-  // clicking a product image will take you to the single product view page
-  // this is done by using the product id as a parameter in the url
-  // the product id is passed in as a prop from the product component
-  // the product id is then used to fetch the product from the database
-  // the product is then set to state and rendered on the page
+  // console.log("====== orderproducts: ", orderProducts)
 
   return (
     <div>

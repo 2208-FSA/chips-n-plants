@@ -120,30 +120,30 @@ const orders = [
 ]
 
 const productOrders = [
-  {
-    orderId: 1,
-    productId: 1,
-    quantity: 3,
-    priceAtPurchase: 13.0,
-  },
-  {
-    orderId: 1,
-    productId: 3,
-    quantity: 1,
-    priceAtPurchase: 5.0,
-  },
-  {
-    orderId: 1,
-    productId: 4,
-    quantity: 1,
-    priceAtPurchase: 4.0,
-  },
-  {
-    orderId: 2,
-    productId: 1,
-    quantity: 2,
-    priceAtPurchase: 41.0,
-  },
+  // {
+  //   orderId: 1,
+  //   productId: 1,
+  //   quantity: 3,
+  //   priceAtPurchase: 13.0,
+  // },
+  // {
+  //   orderId: 1,
+  //   productId: 3,
+  //   quantity: 1,
+  //   priceAtPurchase: 5.0,
+  // },
+  // {
+  //   orderId: 1,
+  //   productId: 4,
+  //   quantity: 1,
+  //   priceAtPurchase: 4.0,
+  // },
+  // {
+  //   orderId: 2,
+  //   productId: 1,
+  //   quantity: 2,
+  //   priceAtPurchase: 41.0,
+  // },
 ]
 
 async function seed() {
