@@ -26,10 +26,12 @@ const Navbar = () => {
         <nav className="nav_links_container">
           <ul className="nav_links_list">
             <li>
-              <a href="/shop">shop</a>
+              <a href="/signup">Log-in/Sign-up</a>
             </li>
             <li>
-              <a href="/signup">log-in/sign-up</a>
+
+              <a href="/shop">shop</a>
+
             </li>
             <li>
               <a href="/about-us">about us</a>
@@ -44,17 +46,24 @@ const Navbar = () => {
         </div>
 
         <div className="nav_user_cart">
-          <a href="/account">
-            <span className="material-symbols-outlined">account_circle</span>
-          </a>
 
-          <button>
-            {isLoggedIn ? <a className="account_login_nav_button" href="/account">Hello, {username}</a>:<a className="account_login_nav_button" href="/login">Sign In</a>}
+
+          <button className="account_login_nav_button">
+            {isLoggedIn ? <a href="/account">Hello, {username}</a> : <a href="/login">Sign In</a>}
+
           </button>
 
           <form onSubmit={handleLogout}>
-            <button type='submit'>Logout User</button>
+            <button className="account_login_nav_button" type='submit'>Logout</button>
           </form>
+
+
+          <div className="nav_user_container">
+            <a href="/account">
+              <span className="material-symbols-outlined">account_circle</span>
+            </a>
+          </div>
+
 
           <a href="/cart">
             <span className="material-symbols-outlined">shopping_cart</span>

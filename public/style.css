@@ -25,6 +25,54 @@ form div {
   /* display: inline-block; */
 }
 
+/* BUTTON */
+button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+a.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+a.button:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+@media all and (max-width:30em) {
+  button {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
 /* NAVBAR */
 .navbar_container {
   display: flex;
@@ -69,6 +117,7 @@ form div {
   list-style: none;
   align-items: center;
   display: flex;
+  min-width: .5rem;
 }
 
 nav a {
@@ -101,7 +150,8 @@ nav a {
 }
 
 .nav_user_cart a {
-  margin: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .nav_logo_container {
@@ -120,7 +170,18 @@ nav a {
   width: 100px;
   text-align: center;
   font-size: 1.2rem;
-  padding: 1rem;
+
+  margin: .5rem;
+}
+
+.account_login_nav_button a {
+  width: 100px;
+  text-align: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: black;
+
+
 }
 
 
@@ -269,6 +330,7 @@ nav a {
   flex-flow: row;
   /* width: 80vh; */
 }
+
 .cart_items_heading {
   font-size: x-large;
 }
@@ -313,10 +375,12 @@ nav a {
   margin-bottom: 0.5rem;
   background-color: white;
 }
+
 .cart_payment_costs_labels {
   padding-left: 0rem;
   /* padding-top: 0.5rem; */
 }
+
 .cart_item_description {
   margin-left: 0rem;
   padding: 1.25rem;
