@@ -1,48 +1,48 @@
-# FS-App-Template
+# Chips and Plants E-commerce store
 
-## Setupz
+Team members:
 
-To use this as boilerplate, you'll need to take the following steps:
+- Tanner Davis
+- Kenny Johnson
+- Ryan Walker
+- Kevin Lam
 
-- Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
+## Technology Stack
 
-- Now you will have to add the fs-app-template as a remote and merge it into your own repository.
+### Main Stack
 
-```
-git remote add boilermaker git@github.com:FullstackAcademy/fs-app-template-v2.git
-git fetch boilermaker
-git merge boilermaker/main
-git branch -m master main
-```
+- Database: Postgres
+- Server handling: Express
+- Frontend: React
+- Language: Nodejs
 
-## Customize
+### Additional technologies
 
-Now that you've got the code, follow these steps to get acclimated:
+- Redux toolkit state management
+- JSON Webtoken
+- Sequelize
+- React-router
 
-- Update project name and description in `package.json`
-- `npm install`
-- Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
-- These commands will create both your **development** and **test** databases
+## Main Features
 
-```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
-```
+- Single page application
+- Fetch and view products from a database
+- Create a new user and store user data
+- Add products to a cart
+- Remove products from a cart
+- Maintain a persistent cart or logged in status
+- Maintain a database of products, orders, users
 
-- By default, running `npm test` will use your test database, while
-  regular development uses development database
+## Rendered Pages
 
-## Start
+### Front View
 
-Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
+![Front View](./public/frontPage.jpg "Plants and Chips front view")
 
-- start:dev will both start your server and build your client side files using webpack
-- start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
-- start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+### Cart View
 
-// kevins addition down here
-// tanners addition here
-// Ryans addition here
+![Cart View](./public/cartPage.jpg "Plants and Chips cart view")
+
+### Sign up View
+
+![Sign up View](./public/signUpPage.jpg "Plants and Chips sign up view")
